@@ -8,7 +8,7 @@ See also [here](https://hackaday.io/project/122480-eecolor-color3)
 Most of the information here was copied from 
 [this blog post](http://www.taylorkillian.com/2013/04/using-fpga-of-eecolor-color3.html) by Taylor Killian.
 
-# Chips
+# Components
 
 * Altera Cyclone IV EP4CE30F23C6N FPGA
 * 128P33BF60 16MByte parallel flash
@@ -18,6 +18,7 @@ Most of the information here was copied from
     128Mbit DRAM (4M x 16bits). 
 * Silicon Image SiI9233ACTU 4-port HDMI Receiver
 * Silicon Image SiI9136ACTU HDMI Transmitter
+* IDT8102 Oscillator
 * FTDI232RL USB to Serial
 
     Not populated!
@@ -81,6 +82,10 @@ Somebody was able [get the DRAM to work](http://www.taylorkillian.com/2013/04/us
 >  I'm using the "SDRAM Controller" module set to custom with a data width of 16, chip select 1, 
 >  banks 4, row 12, and column 8. Then I'm using ALTPLL to generate the 133MHz clock needed using 
 >  a multiplication factor of 16 and division of 3.
+
+# IDT8102 Oscillator
+
+These oscillators can be factory programmed to a wide range of clocks. The one on this board apparently has been programmed to 25MHz.
 
 # FT232RL
 
