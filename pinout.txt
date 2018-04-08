@@ -66,3 +66,8 @@ FT_RTS_         PIN_AB14
 FT_RXD          PIN_AB13 
 FT_TXD          PIN_AB16
 
+# TMP75 (Unpopulated U10)
+TMP75_ALERT_    Y10
+TMP75_SCL       Y8
+TMP75_SDA       Y7
+

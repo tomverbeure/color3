@@ -18,9 +18,13 @@ Most of the information here was copied from
     128Mbit DRAM (4M x 16bits). 
 * Silicon Image SiI9233ACTU 4-port HDMI Receiver
 * Silicon Image SiI9136ACTU HDMI Transmitter
-* FTDI232RL
+* FTDI232RL USB to Serial
 
     Not populated!
+
+* TMP75 temperature sensor
+
+    Not populated
 
 # FPGA IO Assigments
 
@@ -78,10 +82,17 @@ Somebody was able [get the DRAM to work](http://www.taylorkillian.com/2013/04/us
 >  banks 4, row 12, and column 8. Then I'm using ALTPLL to generate the 133MHz clock needed using 
 >  a multiplication factor of 16 and division of 3.
 
-# FTDI232RL
+# FT232RL
 
-The board has unpopulated sockets for a USB connector, and an FTDI232RL chip. Having this would make this board even more useful
+The board has unpopulated sockets for a USB connector, and an FTDI FT232RL chip. Having this would make this board even more useful
 as a general purpose development board.
+
+# TMP75 (speculative)
+
+According to one commenter on the Taylor Killian blog post that started it all, there is an empty socket on the board that
+can be used to populated with a TMP75 temperature sensor. According to the TMP75 datasheet, this sensor has an 8-pin package. 
+On my board, there is an empty 8-pin footprint called U10 that is located right next to the empty U15 footprint of the FT232RL,
+so I assume that this is where the sensor would go.
 
 # Resources
 
@@ -91,8 +102,9 @@ as a general purpose development board.
 * [SiI9233A datasheet](http://www.latticesemi.com/view_document?document_id=51624). 
   [Copy on Arrow Electronics](https://www.arrow.com/en/products/sii9233actu-c/lattice-semiconductor)
 * [SiI9233 Linux driver]
-
 * [SiI9136 datasheet](http://www.latticesemi.com/view_document?document_id=51622)
+* [FT232TL datasheet](http://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT232R.pdf)
+* [TMP75 datasheet](http://www.ti.com/product/TMP75)
 
 [SiI9233 Linux driver]:https://github.com/endlessm/linux-meson/tree/master/drivers/amlogic/ext_hdmiin/sii9233
 [Terasic HDMI-FMC daughter card]:http://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=66&No=1067
