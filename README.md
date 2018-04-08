@@ -18,6 +18,21 @@ Most of the information here was copied from
     128Mbit DRAM (4M x 16bits). 
 * Silicon Image SiI9233ACTU 4-port HDMI Receiver
 * Silicon Image SiI9136ACTU HDMI Transmitter
+* FTDI232RL
+
+    Not populated!
+
+# FPGA IO Assigments
+
+See the [pinout.txt](pinout.txt) file.
+
+The following IO groups have been identified:
+
+* Oscillator
+* LEDs
+* IR receiver
+* Button
+* SDRAM
 
 # Silicon Image Chips
 
@@ -50,6 +65,23 @@ it's very likely that this source code works with the regular SiI9136 to work as
 On the CD-ROM, the key code can be found here: ```Demonstration/tr5_fmcd_hdmi_rx_tx/software/TR5_FMC_HDMI/HDMI_TX.c:InitSII9136```.
 
 While the code does not have anything like #defines, it should be sufficient to get something good going.
+
+There are other way to get programming information for these chips as well. For example, one could google
+"SiI9022A and SiI9024A Transmitter Programming Interface" and get lucky. The registers described in a document
+like that could be very similar as those that are used in the ```InitSII9136``` routine mentioned earlier.
+
+# SDRAM
+
+Somebody was able [get the DRAM to work](http://www.taylorkillian.com/2013/04/using-fpga-of-eecolor-color3.html?showComment=1369193665410#c9082819817087076428): 
+
+>  I'm using the "SDRAM Controller" module set to custom with a data width of 16, chip select 1, 
+>  banks 4, row 12, and column 8. Then I'm using ALTPLL to generate the 133MHz clock needed using 
+>  a multiplication factor of 16 and division of 3.
+
+# FTDI232RL
+
+The board has unpopulated sockets for a USB connector, and an FTDI232RL chip. Having this would make this board even more useful
+as a general purpose development board.
 
 # Resources
 
