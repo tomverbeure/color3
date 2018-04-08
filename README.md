@@ -3,10 +3,16 @@
 
 This repo contains information about the (obsolete) eeColor Color3 board.
 
-See also [here](https://hackaday.io/project/122480-eecolor-color3)
+Most of the information on this page  was copied from 
+[this blog post](http://www.taylorkillian.com/2013/04/using-fpga-of-eecolor-color3.html) by Taylor Killian. That blog
+posts got [attention on Hackaday](https://hackaday.com/2013/05/08/hdmi-color-processing-board-used-as-an-fpga-dev-board-to-mine-bitcoins/), though
+no additinal useful information was added.
 
-Most of the information here was copied from 
-[this blog post](http://www.taylorkillian.com/2013/04/using-fpga-of-eecolor-color3.html) by Taylor Killian.
+My log about reverse engineering this board can be found on [this Hackaday project page](https://hackaday.io/project/122480-eecolor-color3).
+
+# The Board
+
+![PCB Image with Component Markings](./doc/color3_PCB_marked.jpg)
 
 # Components
 
