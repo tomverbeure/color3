@@ -36,7 +36,44 @@ module top(
 	input 		sii9233_scdt
 */
 
-	input [47:0]	misc_input /* synthesis keep */
+	input 		sii9136_d0,
+	input 		sii9136_d1,
+	input 		sii9136_d2,
+	input 		sii9136_d3,
+	input 		sii9136_d4,
+	input 		sii9136_d5,
+	input 		sii9136_d6,
+	input 		sii9136_d7,
+	input 		sii9136_d8,
+	input 		sii9136_d9,
+	input 		sii9136_d10,
+	input 		sii9136_d11,
+	input 		sii9136_d12,
+	input 		sii9136_d13,
+	input 		sii9136_d14,
+	input 		sii9136_d15,
+	input 		sii9136_d16,
+	input 		sii9136_d17,
+	input 		sii9136_d18,
+	input 		sii9136_d19,
+	input 		sii9136_d20,
+	input 		sii9136_d21,
+	input 		sii9136_d22,
+	input 		sii9136_d23,
+	input 		sii9136_d24,
+	input 		sii9136_d25,
+	input 		sii9136_d26,
+	input 		sii9136_d27,
+	input 		sii9136_d28,
+	input 		sii9136_d29,
+	input 		sii9136_d30,
+	input 		sii9136_d31,
+	input 		sii9136_d32,
+	input 		sii9136_d33,
+	input 		sii9136_d34,
+	input 		sii9136_d35,
+
+	input [200:0]	misc_input /* synthesis keep */
 	);
 
 

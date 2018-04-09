@@ -71,3 +71,22 @@ TMP75_ALERT_    Y10
 TMP75_SCL       Y8
 TMP75_SDA       Y7
 
+# SII9136
+D16		PIN_M21 		# misc_input[10]	2	99
+D17		PIN_M20			# misc_input[138]	3	98
+D18		PIN_N22			# misc_input[18]	4	97
+D19		PIN_N21			# misc_input[12]	5	96
+D20		PIN_N20			# misc_input[162]	6	95
+D21		PIN_P22			# misc_input[155]	7	94
+D22		PIN_P21			# misc_input[151]	8	93
+D23		PIN_P20			# misc_input[158]	9	92
+D24		PIN_R22			# misc_input[152]	11	90
+D25		PIN_R21			# misc_input[191]	12	89
+D26		PIN_U22			# misc_input[172]	14	87
+D27		
+D28
+D29
+D30
+D31
+
+
