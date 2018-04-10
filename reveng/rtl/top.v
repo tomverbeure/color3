@@ -36,6 +36,16 @@ module top(
 	input 		sii9233_scdt
 */
 
+	input 		sii9136_reset_,
+	input 		sii9136_int,
+	input 		sii9136_cscl,
+	input 		sii9136_csda,
+
+	input 		sii9136_de,
+	input 		sii9136_hsync,
+	input 		sii9136_vsync,
+	input 		sii9136_idck,
+
 	input 		sii9136_d0,
 	input 		sii9136_d1,
 	input 		sii9136_d2,
