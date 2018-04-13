@@ -21,7 +21,7 @@ My log about reverse engineering this board can be found on [this Hackaday proje
     This flash is used to configure the FPGA on the board at bootup.
     The bitstream takes up around 9MB, so 7MB can be used for other purposes.
 * Micron MT48LC8M16A2-75
-    128Mbit DRAM (4M x 16bits). 
+    128Mbit DRAM (4M x 16bits). 133MHz.
 * Silicon Image SiI9233ACTU 4-port HDMI Receiver
 * Silicon Image SiI9136ACTU HDMI Transmitter
 * IDT8102 Oscillator
@@ -45,6 +45,8 @@ The following IO groups have been identified:
 * Button
 * SDRAM
 
+Since all major chips are using LVTTL compatilbe IOs, all FPGA IO banks are set to 3.3V as well.
+
 # Silicon Image Chips
 
 One of the really nice features of the Silicon Image chips is that they support HDCP 1.4. This version of
@@ -58,6 +60,8 @@ holders.
 
 The best we can hope for is that somebody can get these chips to work by spying transactions on the I2C bus that runs
 between the FPGA and the SI chips.
+
+All voltages on the Silicon Image chips are 3.3V LVTTL.
 
 ## SiI9233 HDMI Receiver
 
@@ -88,6 +92,10 @@ Somebody was able [get the DRAM to work](http://www.taylorkillian.com/2013/04/us
 >  I'm using the "SDRAM Controller" module set to custom with a data width of 16, chip select 1, 
 >  banks 4, row 12, and column 8. Then I'm using ALTPLL to generate the 133MHz clock needed using 
 >  a multiplication factor of 16 and division of 3.
+
+The SDRAM runs 3.3V as well.
+
+Like the SI chips, the SDRAM IO pins are 3.3V LVTTL compatiable as well.
 
 # IDT8102 Oscillator
 
