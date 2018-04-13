@@ -268,57 +268,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_b_pad_out
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_g_pad_out
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to led_r_pad_out
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[200]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[199]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[198]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[197]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[196]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[195]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[194]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[193]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[192]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[191]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[190]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[189]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[188]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[187]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[186]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[185]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[184]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[183]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[182]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[181]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[180]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[179]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[178]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[177]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[176]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[175]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[174]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[173]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[172]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[171]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[170]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[169]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[168]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[167]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[166]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[165]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[164]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[163]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[162]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[161]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[160]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[159]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[158]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[157]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[156]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[155]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[154]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[153]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[152]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[151]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[150]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[149]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[148]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to misc_input[147]
@@ -479,7 +428,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_cscl
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_csda
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_de
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_hsync
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_idck
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_int
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_q[35]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_q[34]
@@ -1132,5 +1080,10 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_LOWORD=5
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_HIWORD=11168" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=sld_reserved_color3_reveng_auto_signaltap_0_1_d52e," -section_id auto_signaltap_0
 
+
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA7_THROUGH_DATA2_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_global_assignment -name RESERVE_OTHER_AP_PINS_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_location_assignment PIN_K22 -to sii9136_d[11]
+set_global_assignment -name SLD_FILE /home/vagrant/projects/color3/reveng/altera/stp1_auto_stripped.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name SLD_FILE /home/ubuntu/projects/color3/reveng/altera/stp1_auto_stripped.stp

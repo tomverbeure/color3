@@ -31,7 +31,7 @@ module top(
 	input 		sii9233_de		/* synthesis keep */,
 	input 		sii9233_hsync		/* synthesis keep */,
 	input 		sii9233_vsync		/* synthesis keep */,
-	input 		sii9233_idck		/* synthesis keep */,
+	input 		sii9233_odck		/* synthesis keep */,
 
 	input [35:0]	sii9233_q		/* synthesis keep */,
 
