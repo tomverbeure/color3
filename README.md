@@ -33,9 +33,14 @@ My log about reverse engineering this board can be found on [this Hackaday proje
 
     Not populated
 
-# FPGA IO Assigments
+# FPGA
+
+The Cyclone IV EP4CE30F23C6N FPGA has a F484 BGA package.
 
 See the [pinout.txt](pinout.txt) file.
+
+## FPGA IO Assigments
+
 
 The following IO groups have been identified:
 
@@ -44,6 +49,8 @@ The following IO groups have been identified:
 * IR receiver
 * Button
 * SDRAM
+
+## IO Banks
 
 Since all major chips are using LVTTL compatilbe IOs, all FPGA IO banks are set to 3.3V as well.
 
@@ -115,7 +122,17 @@ so I assume that this is where the sensor would go.
 
 # Resources
 
-* [EP4CE420 Pin Information](https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/dp/cyclone-iv/ep4ce30.pdf)
+* [Cyclone IV Device Handbook, Volume 1](https://www.altera.com/en_US/pdfs/literature/hb/cyclone-iv/cyclone4-handbook.pdf)
+* [Cyclone IV Device Handbook, Volume 2](https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/hb/cyclone-iv/cyiv-5v2.pdf)
+
+    Transceivers and Reconfiguration
+
+* [Cyclone IV Device Handbook, Volume 3](https://www.altera.com/en_US/pdfs/literature/hb/cyclone-iv/cyiv-53001.pdf)
+
+    Datasheet
+
+* [EP4CE30 Pin Information](https://www.altera.com/content/dam/altera-www/global/en_US/pdfs/literature/dp/cyclone-iv/ep4ce30.pdf)
+
 * [Micron 48LC8M16A2 datasheet](https://www.micron.com/parts/dram/sdram/mt48lc8m16a2f4-75-it)
 
 * [SiI9233A datasheet](http://www.latticesemi.com/view_document?document_id=51624). 
