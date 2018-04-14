@@ -10,6 +10,17 @@ module top(
 	input 		ir_rx /* synthesis keep */,
 	input 		button /* synthesis keep */,
 
+	// Flash
+	output		 flash_dclk,
+	output		 flash_nreset,
+	output		 flash_nce,
+	output		 flash_noe,
+	output		 flash_navd,
+	output		 flash_nwe,
+//	input		 flash_wait,
+	output [23:0]	 flash_padd,
+	inout [15:0]	 flash_data,
+
 	// SDRAM
 	input 		dram_clk_pad_out,
 	input 		dram_cs_n_pad_out,
@@ -49,7 +60,7 @@ module top(
 
 	output [35:0]	sii9136_d,
 
-	input [149:0]	misc_input		/* synthesis keep */
+	input [104:0]	misc_input		/* synthesis keep */
 	);
 
 
@@ -76,5 +87,14 @@ module top(
 	assign	sii9233_reset_ = 1'b0;
 	assign 	sii9233_cscl = 1'bz;
 	assign 	sii9233_csda = 1'bz;
+
+	assign flash_dclk = 1'b0;
+	assign flash_nreset = 1'b0;
+	assign flash_nce = 1'b1;
+	assign flash_noe = 1'b1;
+	assign flash_navd = 1'b1;
+	assign flash_nwe = 1'b1;
+	assign flash_padd = 24'd0;
+	assign flash_data = {16{1'bz}}; 
 
 endmodule
