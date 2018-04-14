@@ -67,7 +67,6 @@ module top(
 		cntr <= cntr + 1;
 	end
 
-	assign led_r_pad_out = cntr[25];
 	assign led_g_pad_out = cntr[24];
 	assign led_b_pad_out = cntr[23];
 
@@ -94,5 +93,38 @@ module top(
 	assign flash_nwe = 1'b1;
 	assign flash_padd = 24'd0;
 	assign flash_data = {16{1'bz}}; 
+
+	reg global_reset_n;
+	always @(posedge osc25_pad_in) begin
+		global_reset_n 	<= 1'b1;
+	end
+
+	assign pll_areset = 1'b0;
+
+	wire [7:0] pio_in, pio_out;
+
+	cpu_sys u_cpu_sys(
+		.pll_areset_export	(pll_areset),
+		.pll_ref_clk_clk	(osc25_pad_in),
+
+		.pll_sdram_clk_clk	(sdram_clk),
+		.vid_clk_clk		(vid_clk), 
+		.pll_cpu_clk_clk	(cpu_clk),
+
+		.pll_phasedone_export	(pll_phase_done),
+		.pll_locked_export	(pll_locked),
+
+//		.cpu_clk_clk		(cpu_clk),
+//		.cpu_reset_reset_n	(!pll_locked),
+
+		.cpu_clk_clk		(osc25_pad_in),
+		.cpu_reset_reset_n	(global_reset_n),
+
+		.pio_in_port		(pio_in),
+		.pio_out_port		(pio_out)
+	);
+
+	assign pio_in = { 7'd0, ir_rx, button };
+	assign led_r_pad_out = pio_out[0];
 
 endmodule

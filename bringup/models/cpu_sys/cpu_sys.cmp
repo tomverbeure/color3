@@ -1,0 +1,16 @@
+	component cpu_sys is
+		port (
+			pll_sdram_clk_clk    : out std_logic;                                       -- clk
+			vid_clk_clk          : out std_logic;                                       -- clk
+			pll_areset_export    : in  std_logic                    := 'X';             -- export
+			pll_phasedone_export : out std_logic;                                       -- export
+			pio_in_port          : in  std_logic_vector(7 downto 0) := (others => 'X'); -- in_port
+			pio_out_port         : out std_logic_vector(7 downto 0);                    -- out_port
+			pll_locked_export    : out std_logic;                                       -- export
+			pll_ref_clk_clk      : in  std_logic                    := 'X';             -- clk
+			cpu_reset_reset_n    : in  std_logic                    := 'X';             -- reset_n
+			pll_cpu_clk_clk      : out std_logic;                                       -- clk
+			cpu_clk_clk          : in  std_logic                    := 'X'              -- clk
+		);
+	end component cpu_sys;
+

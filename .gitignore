@@ -2,3 +2,5 @@ dont_commit/*
 */altera/db
 */altera/incremental_db
 */altera/output_files
+.*swp
+.qsys_edit
