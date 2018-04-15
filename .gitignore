@@ -3,4 +3,6 @@ dont_commit/*
 */altera/incremental_db
 */altera/output_files
 .*swp
-.qsys_edit
+**/.qsys_edit/*
+*/altera/*.qws
+*/altera/*_stripped.stp

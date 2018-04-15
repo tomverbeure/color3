@@ -61,23 +61,18 @@ module top(
 	output [35:0]	sii9136_d
 	);
 
-
 	reg [25:0] cntr;
 	always @(posedge osc25_pad_in) begin
 		cntr <= cntr + 1;
 	end
 
-	assign led_g_pad_out = cntr[24];
+	assign led_g_pad_out = cntr[25] ^ cpu_cntr[25] ^ vid_cntr[25] ^ sdram_cntr[25];
 	assign led_b_pad_out = cntr[23];
-
-	assign	sii9136_reset_ = 1'b0;
-	assign 	sii9136_cscl = 1'bz;
-	assign 	sii9136_csda = 1'bz;
 
 	assign 	sii9136_de = 1'b0;
 	assign 	sii9136_hsync = 1'b0;
 	assign 	sii9136_vsync = 1'b0;
-	assign 	sii9136_idck = 1'b0;
+	assign 	sii9136_idck = vid_clk;
 
 	assign sii9136_d = 36'd0;
 
@@ -98,8 +93,6 @@ module top(
 	always @(posedge osc25_pad_in) begin
 		global_reset_n 	<= 1'b1;
 	end
-
-	assign pll_areset = 1'b0;
 
 	wire [7:0] pio_in, pio_out;
 
@@ -124,7 +117,28 @@ module top(
 		.pio_out_port		(pio_out)
 	);
 
-	assign pio_in = { 7'd0, ir_rx, button };
+	assign pio_in = { sii9136_cscl, sii9136_csda, sii9136_int, 3'd0, ir_rx, button };
+
 	assign led_r_pad_out = pio_out[0];
+
+	assign pll_areset     = pio_out[4];
+	assign sii9136_reset_ = pio_out[5];
+	assign sii9136_csda   = pio_out[6] ? 1'bz : 1'b0;
+	assign sii9136_cscl   = pio_out[7] ? 1'bz : 1'b0;
+
+	reg [25:0] sdram_cntr /* synthesis keep */;
+	always @(posedge sdram_clk) begin
+		sdram_cntr <= sdram_cntr + 1;
+	end
+
+	reg [25:0] vid_cntr /* synthesis keep */;
+	always @(posedge vid_clk) begin
+		vid_cntr <= vid_cntr + 1;
+	end
+
+	reg [25:0] cpu_cntr /* synthesis keep */;
+	always @(posedge cpu_clk) begin
+		cpu_cntr <= cpu_cntr + 1;
+	end
 
 endmodule

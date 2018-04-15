@@ -45,8 +45,9 @@ create_clock -name {osc25_pad_in} -period 40.000 -waveform { 0.000 20.000 } [get
 # Create Generated Clock
 #**************************************************************
 
-create_generated_clock -name cpu_clk -source [get_pins {u_cpu_sys|altpll_0|sd1|pll7|inclk[0]}] -duty_cycle 50.000 -multiply_by 4 -divide_by 5 -master_clock {osc25_pad_in} [get_pins {u_cpu_sys|altpll_0|sd1|pll7|clk[0]}] 
-
+create_generated_clock -name cpu_clk   -source [get_pins {u_cpu_sys|altpll_0|sd1|pll7|inclk[0]}] -duty_cycle 50.000 -multiply_by 4 -divide_by 5 -master_clock {osc25_pad_in} [get_pins {u_cpu_sys|altpll_0|sd1|pll7|clk[0]}] 
+create_generated_clock -name sdram_clk -source [get_pins {u_cpu_sys|altpll_0|sd1|pll7|inclk[0]}] -duty_cycle 50.000 -multiply_by 4 -divide_by 1 -master_clock {osc25_pad_in} [get_pins {u_cpu_sys|altpll_0|sd1|pll7|clk[1]}] 
+create_generated_clock -name vid_clk   -source [get_pins {u_cpu_sys|altpll_0|sd1|pll7|inclk[0]}] -duty_cycle 50.000 -multiply_by 1 -divide_by 1 -master_clock {osc25_pad_in} [get_pins {u_cpu_sys|altpll_0|sd1|pll7|clk[2]}] 
 
 #**************************************************************
 # Set Clock Latency
