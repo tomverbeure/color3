@@ -277,6 +277,21 @@ int i2c_read_regs(byte addr, byte reg_nr, byte *values, int len)
 	return 1;
 }
 
+int sii9136_i2c_write_reg(byte reg_nr, byte value)
+{
+	int result = i2c_write_reg(I2C_ADDR_TPI, reg_nr, value);
+
+	if (!result)
+		alt_printf("SII9136 reg write fail: %x, %x = %x\n", I2C_ADDR_TPI, reg_nr, value);
+
+	return result;
+}
+
+int sii9136_i2c_read_reg(byte reg_nr, byte *value)
+{
+	return i2c_read_reg(I2C_ADDR_TPI, reg_nr, value);
+}
+
 void sii9136_reset()
 {
 	int result; 
@@ -298,6 +313,54 @@ void sii9136_reset()
 	alt_printf("Device ID: %x %x %x\n", id[0], id[1], id[2]);
 }
 
+void sii9136_init()
+{
+	alt_u8 status;
+
+	sii9136_i2c_write_reg(0x1A, 0x11);		// disable TMDS output
+
+	sii9136_i2c_write_reg(0x09, 0x00);		// input 8-bit RGB mode
+	sii9136_i2c_write_reg(0x1E, 0x00);		// Power up transmitter----Enter full-operation D0 state
+
+
+	sii9136_i2c_write_reg(0x09, 0x04);		// input 12-bit RGB mode
+	sii9136_i2c_write_reg(0x0A, 0x04);		// output 12-bit RGB
+
+	sii9136_i2c_write_reg(0xBC, 0x01);		// Set source termination
+	sii9136_i2c_write_reg(0xBD, 0x80);
+	sii9136_i2c_write_reg(0xBE, 0x24);
+
+	sii9136_i2c_write_reg(0x19, 0x01);
+	sii9136_i2c_write_reg(0x3C, 0x00);		// disable Interrupt
+	sii9136_i2c_write_reg(0x3D, 0xF3);		// clear Interrupt Status
+
+	//audio config
+	sii9136_i2c_write_reg(0x26, 0x91);
+	sii9136_i2c_write_reg(0x25, 0x03);
+	sii9136_i2c_write_reg(0x27, 0x00);
+	sii9136_i2c_write_reg(0x1f, 0x80);
+	sii9136_i2c_write_reg(0x1f, 0x91);
+	sii9136_i2c_write_reg(0x1f, 0xa2);
+	sii9136_i2c_write_reg(0x1f, 0xb3);
+	sii9136_i2c_write_reg(0x20, 0xF0);
+	sii9136_i2c_write_reg(0x26, 0x81);		// I2S
+	//audio config end
+
+	sii9136_i2c_write_reg(0xBC, 0x02);
+	sii9136_i2c_write_reg(0xBD, 0x1D);
+
+	sii9136_i2c_read_reg(0xBE, &status);
+	status=status^0x10;
+	sii9136_i2c_write_reg(0xBE, status);
+
+	sii9136_i2c_write_reg(0x1A, 0x01);		// enable TMDS output
+	sii9136_i2c_write_reg(0x3C, 0xFB);		// Interrupt Enable
+
+	sii9136_i2c_read_reg(0x3D, &status);
+	alt_printf("status=%x\n", status);
+}
+
+
 int main()
 { 
 	alt_putstr("\nHello from Nios II!\n");
@@ -306,6 +369,7 @@ int main()
 	SCL(1);
 
 	sii9136_reset();
+	sii9136_init();
 	
 	int i;
 	/* Event loop never exits. */
