@@ -10,6 +10,13 @@ no additinal useful information was added.
 
 My log about reverse engineering this board can be found on [this Hackaday project page](https://hackaday.io/project/122480-eecolor-color3).
 
+# Status
+
+* All the known important connections to the FPGA have been identified.
+* the `bringup` project configures the SiI9136 HDMI TX chip and successfully sends out a 640x480 test image.
+
+The Hackaday project log will have more detailed information.
+
 # The Board
 
 ![PCB Image with Component Markings](./doc/color3_PCB_marked.jpg)
