@@ -53,13 +53,27 @@ module top(
 	inout 		sii9136_cscl,
 	inout 		sii9136_csda,
 
-	output 		sii9136_de,
-	output 		sii9136_hsync,
-	output 		sii9136_vsync,
-	output 		sii9136_idck,
+	output wire 	sii9136_idck,
+	output reg 	sii9136_de,
+	output reg 	sii9136_hsync,
+	output reg 	sii9136_vsync,
 
-	output [35:0]	sii9136_d
+	output reg [35:0] sii9136_d
 	);
+
+	localparam h_front  = 16;
+	localparam h_sync   = 96;
+	localparam h_back   = 48;
+	localparam h_active = 640;
+	localparam h_blank  = h_front + h_sync + h_back;
+	localparam h_total  = h_front + h_sync + h_back + h_active;
+
+	localparam v_front  = 10;
+	localparam v_sync   = 2;
+	localparam v_back   = 33;
+	localparam v_active = 480;
+	localparam v_blank  = v_front + v_sync + v_back;
+	localparam v_total  = v_front + v_sync + v_back + v_active;
 
 	reg [25:0] cntr;
 	always @(posedge osc25_pad_in) begin
@@ -68,13 +82,6 @@ module top(
 
 	assign led_g_pad_out = cntr[25] ^ cpu_cntr[25] ^ vid_cntr[25] ^ sdram_cntr[25];
 	assign led_b_pad_out = cntr[23];
-
-	assign 	sii9136_de = 1'b0;
-	assign 	sii9136_hsync = 1'b0;
-	assign 	sii9136_vsync = 1'b0;
-	assign 	sii9136_idck = vid_clk;
-
-	assign sii9136_d = 36'd0;
 
 	assign	sii9233_reset_ = 1'b0;
 	assign 	sii9233_cscl = 1'bz;
@@ -139,6 +146,50 @@ module top(
 	reg [25:0] cpu_cntr /* synthesis keep */;
 	always @(posedge cpu_clk) begin
 		cpu_cntr <= cpu_cntr + 1;
+	end
+
+	reg [11:0] col_cntr;
+	reg [11:0] line_cntr;
+	reg [11:0] offset_cntr;
+
+	always @(posedge vid_clk) begin
+		if (col_cntr < h_total-1) begin
+			col_cntr <= col_cntr + 1;
+		end
+		else if (line_cntr < v_total-1) begin
+			line_cntr <= line_cntr + 1;
+			col_cntr <= 0;
+		end
+		else begin
+			line_cntr <= 0;
+			col_cntr <= 0;
+
+			if (offset_cntr < v_active-1) begin
+				offset_cntr <= offset_cntr + 1;
+			end
+			else begin
+				offset_cntr <= 0;
+			end
+		end
+	end
+
+	assign 	sii9136_idck = vid_clk;
+
+	always @(posedge vid_clk) begin
+		sii9136_de    <= (line_cntr >= v_blank) && (col_cntr >= h_blank);
+		sii9136_hsync <= col_cntr >= h_front && col_cntr < h_front + h_sync;
+		sii9136_vsync <= line_cntr >= v_front && line_cntr < v_front + v_sync;
+
+		if (line_cntr < offset_cntr + v_blank) begin
+			sii9136_d[35:24] <= {12{1'b1}};
+			sii9136_d[23:12] <= line_cntr << 3;
+			sii9136_d[11: 0] <= col_cntr << 3;
+		end
+		else begin
+			sii9136_d[35:24] <= line_cntr << 3;
+			sii9136_d[23:12] <= {12{1'b1}};
+			sii9136_d[11: 0] <= col_cntr << 3;
+		end
 	end
 
 endmodule

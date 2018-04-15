@@ -381,7 +381,6 @@ int main()
 			IOWR_ALTERA_AVALON_PIO_CLEAR_BITS(PIO_0_BASE, 0x01);
 		}
 		alt_printf("%x\n", IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE));
-		sii9136_reset();
 	}
 
 	return 0;
