@@ -92,6 +92,8 @@
 #define I2C_ADDR_CPI	0xC4
 #endif
 
+typedef unsigned char byte;
+
 void SCL(int bit)
 {
 	if (bit)
@@ -161,11 +163,13 @@ unsigned char i2c_rx(char ack)
     		while(SCL_IN()==0);    // wait for any SCL clock stretching
 
     		i2c_dly();
-    		if(SDA_IN()) d |= 1;
+		d |= SDA_IN();
     		SCL(0);
 	} 
-	if(ack) SDA(0);
-	else SDA(1);
+	if(ack) 
+		SDA(0);
+	else 
+		SDA(1);
 
 	SCL(1);
 	i2c_dly();             // send (N)ACK bit
@@ -174,6 +178,7 @@ unsigned char i2c_rx(char ack)
 	return d;
 }
 
+// return 1: ACK, 0: NACK
 int i2c_tx(unsigned char d)
 {
 	char x;
@@ -188,62 +193,114 @@ int i2c_tx(unsigned char d)
 	SDA(1);
 	SCL(1);
 	i2c_dly();
-	b = SDA_IN();          // possible ACK bit
+	b = !SDA_IN();          // possible ACK bit
 	SCL(0);
 	return b;
 }
 
-#if 0
-void test()
+int i2c_write_buf(byte addr, byte* data, int len)
 {
-	i2c_start();              // send start sequence
-	i2c_tx(0xE0);             // SRF08 I2C address with R/W bit clear
-	i2c_tx(0x00);             // SRF08 command register address
-	i2c_tx(0x51);             // command to start ranging in cm
-	i2c_stop();               // send stop sequence
+	int ack;
 
-	i2c_start();              // send start sequence
-	i2c_tx(0xE0);             // SRF08 I2C address with R/W bit clear
-	i2c_tx(0x01);             // SRF08 light sensor register address
-	i2c_start();              // send a restart sequence
-	i2c_tx(0xE1);             // SRF08 I2C address with R/W bit set
-	lightsensor = i2c_rx(1);  // get light sensor and send acknowledge. Internal register address will increment automatically.
-	rangehigh = i2c_rx(1);    // get the high byte of the range and send acknowledge.
-	rangelow = i2c_rx(0);     // get low byte of the range - note we don't acknowledge the last byte.
-	i2c_stop();               // send stop sequence
+	i2c_start();
+	ack = i2c_tx(addr);
+	if (!ack)
+		return 0;
+
+	int i;
+	for(i=0;i<len;++i){
+		ack = i2c_tx(data[i]);
+		if (!ack)
+			return 0;
+	}
+
+	i2c_stop();
+
+	return 1;
 }
-#endif
+
+int i2c_read_buf(byte addr, byte *data, int len)
+{
+	int ack;
+
+	i2c_start();            
+
+	ack = i2c_tx(addr | 1);          
+	if (!ack)
+		return 0;
+
+	int i;
+	for(i=0;i<len;++i){
+		data[i] = i2c_rx(i!=len-1);
+	}
+	i2c_stop();               
+
+	return 1;
+}
+
+int i2c_write_reg(byte addr, byte reg_nr, byte value)
+{
+	byte data[2] = { reg_nr, value };
+
+	return i2c_write_buf(addr, data, 2);
+}
+
+int i2c_read_reg(byte addr, byte reg_nr, byte *value)
+{
+	int result;
+
+	// Set address to read
+	result = i2c_write_buf(addr, &reg_nr, 1);
+	if (!result)
+		return 0;
+
+	result = i2c_read_buf(addr, value, 1);
+	if (!result)
+		return 0;
+
+	return 1;
+}
+
+int i2c_read_regs(byte addr, byte reg_nr, byte *values, int len)
+{
+	int result;
+
+	// Set address to read
+	result = i2c_write_buf(addr, &reg_nr, 1);
+	if (!result)
+		return 0;
+
+	result = i2c_read_buf(addr, values, len);
+	if (!result)
+		return 0;
+
+	return 1;
+}
 
 void sii9136_reset()
 {
+	int result; 
+
 	IOWR_ALTERA_AVALON_PIO_CLEAR_BITS(PIO_0_BASE, 0x20);
 	i2c_dly();
 	IOWR_ALTERA_AVALON_PIO_SET_BITS(PIO_0_BASE, 0x20);
 
-	i2c_start();
-	i2c_tx(I2C_ADDR_TPI);
-	i2c_tx(0xC7);
-	i2c_tx(0x00);
-	i2c_stop();
+	result = i2c_write_reg(I2C_ADDR_TPI, 0xC7, 0x00);
+	if (!result){
+		alt_printf("Error TPI Mode Enable\n");
+	}
+	else{
+		alt_printf("TPI Mode Enable Ok\n");
+	}
 
 	unsigned char id[3];
-
-	i2c_start();              // send start sequence
-	i2c_tx(I2C_ADDR_TPI);
-	i2c_tx(0x1B);             
-	i2c_start();            
-	i2c_tx(I2C_ADDR_TPI | 1);          
-	id[0] = i2c_rx(1);  
-	id[1] = i2c_rx(1);  
-	id[2] = i2c_rx(0);  
-	i2c_stop();               
-
-	alt_printf("\nDevice ID: %x %x %x\n", id[0], id[1], id[2]);
+	i2c_read_regs(I2C_ADDR_TPI, 0x1b, id, 3);
+	alt_printf("Device ID: %x %x %x\n", id[0], id[1], id[2]);
 }
 
 int main()
 { 
-	alt_putstr("Hello from Nios II!\n");
+	alt_putstr("\nHello from Nios II!\n");
 
 	SDA(1);
 	SCL(1);
@@ -259,7 +316,7 @@ int main()
 		for(i=0;i<500000;++i){
 			IOWR_ALTERA_AVALON_PIO_CLEAR_BITS(PIO_0_BASE, 0x01);
 		}
-		alt_printf("%x ", IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE));
+		alt_printf("%x\n", IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE));
 		sii9136_reset();
 	}
 
