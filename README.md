@@ -6,7 +6,7 @@ This repo contains information about the (obsolete) eeColor Color3 board.
 Most of the information on this page  was copied from 
 [this blog post](http://www.taylorkillian.com/2013/04/using-fpga-of-eecolor-color3.html) by Taylor Killian. That blog
 posts got [attention on Hackaday](https://hackaday.com/2013/05/08/hdmi-color-processing-board-used-as-an-fpga-dev-board-to-mine-bitcoins/), though
-no additinal useful information was added.
+no additional useful information was added.
 
 My log about reverse engineering this board can be found on [this Hackaday project page](https://hackaday.io/project/122480-eecolor-color3).
 
@@ -44,10 +44,9 @@ The Hackaday project log will have more detailed information.
 
 The Cyclone IV EP4CE30F23C6N FPGA has a F484 BGA package.
 
-See the [pinout.txt](pinout.txt) file.
+See the [Quartus pinout file](./shared/pin_config.tcl).
 
 ## FPGA IO Assigments
-
 
 The following IO groups have been identified:
 
@@ -56,6 +55,10 @@ The following IO groups have been identified:
 * IR receiver
 * Button
 * SDRAM
+* SiI9136
+* SiI9233
+
+This should cover all the major connections to the FPGA.
 
 ## IO Banks
 
@@ -88,12 +91,12 @@ There is no Linux driver for this chip. However, there is the [Terasic HDMI-FMC 
 device. This daughter card also comes with a CD-ROM that contains an example with full source code to do an HDMI RX-HDMI TXa
 loopback. Even better: the CD-ROM can be downloaded [here](http://download.terasic.com/downloads/cd-rom/hdmi-fmc/).
 
-The only difference between the SiI9136-3 and SiI9136 seems to be the maximum pixel clock frequency (300MHz vs 165MHz), so
-it's very likely that this source code works with the regular SiI9136 to work as well.
+The only difference between the SiI9136-3 and SiI9136 seems to be the maximum pixel clock frequency (300MHz vs 165MHz), so 
+the settings work just as well for the SiI9136.
 
-On the CD-ROM, the key code can be found here: ```Demonstration/tr5_fmcd_hdmi_rx_tx/software/TR5_FMC_HDMI/HDMI_TX.c:InitSII9136```.
+On the CD-ROM, the key code can be found here: `Demonstration/tr5_fmcd_hdmi_rx_tx/software/TR5_FMC_HDMI/HDMI_TX.c:InitSII9136`.
 
-While the code does not have anything like #defines, it should be sufficient to get something good going.
+The code of the CD-ROM is used to create the test image of the `bringup` project.
 
 There are other way to get programming information for these chips as well. For example, one could google
 "SiI9022A and SiI9024A Transmitter Programming Interface" and get lucky. The registers described in a document
