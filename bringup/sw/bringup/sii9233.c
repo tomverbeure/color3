@@ -45,16 +45,21 @@ void sii9233_reset()
 {
 	int result; 
 
+	// Toggle reset pin
 	IOWR_ALTERA_AVALON_PIO_CLEAR_BITS(PIO_0_BASE, 1<<13);
 	i2c_dly();
 	IOWR_ALTERA_AVALON_PIO_SET_BITS(PIO_0_BASE, 1<<13);
 
-	result = i2c_write_reg(&sii9233_i2c_ctx, SII9233_I2C_ADDR_RPI, 0xC7, 0x00);
-	if (!result){
-		alt_printf("Error RPI Mode Enable\n");
+	// I2C address-only transaction to check if there's an ACK.
+	i2c_start(&sii9233_i2c_ctx);
+	int ack = i2c_tx(&sii9233_i2c_ctx, SII9233_I2C_ADDR_RPI);
+	i2c_stop(&sii9233_i2c_ctx);
+
+	if (!ack){
+		alt_printf("SII9233 not responding!\n");
 	}
 	else{
-		alt_printf("RPI Mode Enable Ok\n");
+		alt_printf("SII9233 present!\n");
 	}
 
 	unsigned char id[3];
