@@ -142,7 +142,7 @@ ACDS_VERSION := 13.0sp1
 ELF := bringup.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world_small.c
+C_SRCS := hello_world_small.c i2c.c
 CXX_SRCS :=
 ASM_SRCS :=
 
