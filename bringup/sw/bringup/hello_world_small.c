@@ -6,15 +6,21 @@
 #include "global.h"
 
 #include "sii9136.h"
+#include "sii9233.h"
 
 int main()
 { 
 	alt_putstr("\nHello from Nios II!\n");
 
 	sii9136_initialize();
+	sii9233_initialize();
+
+	sii9233_reset();
+//	sii9233_init();
 	
 	sii9136_reset();
 	sii9136_init();
+
 	
 	int i;
 	/* Event loop never exits. */
