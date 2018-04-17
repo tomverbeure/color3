@@ -147,13 +147,10 @@ int i2c_read_buf(i2c_ctx_t *ctx, byte addr, byte *data, int len)
 	if (!ack)
 		return 0;
 
-	alt_printf("rb");
-
 	int i;
 	for(i=0;i<len;++i){
 		data[i] = i2c_rx(ctx, i!=len-1);
 	}
-	alt_printf("rb");
 	i2c_stop(ctx);               
 
 	return 1;
