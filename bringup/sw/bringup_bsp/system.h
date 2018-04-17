@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'cpu_sys'
  * SOPC Builder design path: /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo
  *
- * Generated: Sat Apr 14 05:47:49 UTC 2018
+ * Generated: Tue Apr 17 00:58:19 UTC 2018
  */
 
 /*
@@ -246,7 +246,7 @@
 #define PIO_0_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_0_BIT_MODIFYING_OUTPUT_REGISTER 1
 #define PIO_0_CAPTURE 1
-#define PIO_0_DATA_WIDTH 8
+#define PIO_0_DATA_WIDTH 32
 #define PIO_0_DO_TEST_BENCH_WIRING 0
 #define PIO_0_DRIVEN_SIM_VALUE 0
 #define PIO_0_EDGE_TYPE "RISING"

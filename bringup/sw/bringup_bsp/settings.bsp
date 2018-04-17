@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 14, 2018 5:47:48 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1523684868947</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 17, 2018 2:51:21 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1523933481612</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/vagrant/projects/color3/bringup/sw/bringup_bsp</BspGeneratedLocation>
-        <BspSettingsFile>./settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2_qsys_0</Cpu>

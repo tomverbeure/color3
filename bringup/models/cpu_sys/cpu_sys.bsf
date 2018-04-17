@@ -33,8 +33,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 152)
 		(input)
-		(text "pio_in_port[7..0]" (rect 0 0 63 12)(font "Arial" (font_size 8)))
-		(text "pio_in_port[7..0]" (rect 4 141 106 152)(font "Arial" (font_size 8)))
+		(text "pio_in_port[31..0]" (rect 0 0 67 12)(font "Arial" (font_size 8)))
+		(text "pio_in_port[31..0]" (rect 4 141 112 152)(font "Arial" (font_size 8)))
 		(line (pt 0 152)(pt 128 152)(line_width 3))
 	)
 	(port
@@ -82,8 +82,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 168)
 		(output)
-		(text "pio_out_port[7..0]" (rect 0 0 69 12)(font "Arial" (font_size 8)))
-		(text "pio_out_port[7..0]" (rect 4 157 112 168)(font "Arial" (font_size 8)))
+		(text "pio_out_port[31..0]" (rect 0 0 73 12)(font "Arial" (font_size 8)))
+		(text "pio_out_port[31..0]" (rect 4 157 118 168)(font "Arial" (font_size 8)))
 		(line (pt 0 168)(pt 128 168)(line_width 3))
 	)
 	(port

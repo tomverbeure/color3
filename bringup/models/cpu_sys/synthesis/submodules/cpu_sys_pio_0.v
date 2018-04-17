@@ -34,32 +34,32 @@ module cpu_sys_pio_0 (
                      )
 ;
 
-  output  [  7: 0] out_port;
+  output  [ 31: 0] out_port;
   output  [ 31: 0] readdata;
   input   [  2: 0] address;
   input            chipselect;
   input            clk;
-  input   [  7: 0] in_port;
+  input   [ 31: 0] in_port;
   input            reset_n;
   input            write_n;
   input   [ 31: 0] writedata;
 
   wire             clk_en;
-  reg     [  7: 0] d1_data_in;
-  reg     [  7: 0] d2_data_in;
-  wire    [  7: 0] data_in;
-  reg     [  7: 0] data_out;
-  reg     [  7: 0] edge_capture;
+  reg     [ 31: 0] d1_data_in;
+  reg     [ 31: 0] d2_data_in;
+  wire    [ 31: 0] data_in;
+  reg     [ 31: 0] data_out;
+  reg     [ 31: 0] edge_capture;
   wire             edge_capture_wr_strobe;
-  wire    [  7: 0] edge_detect;
-  wire    [  7: 0] out_port;
-  wire    [  7: 0] read_mux_out;
+  wire    [ 31: 0] edge_detect;
+  wire    [ 31: 0] out_port;
+  wire    [ 31: 0] read_mux_out;
   reg     [ 31: 0] readdata;
   wire             wr_strobe;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
-  assign read_mux_out = ({8 {(address == 0)}} & data_in) |
-    ({8 {(address == 3)}} & edge_capture);
+  assign read_mux_out = ({32 {(address == 0)}} & data_in) |
+    ({32 {(address == 3)}} & edge_capture);
 
   always @(posedge clk or negedge reset_n)
     begin
@@ -77,7 +77,7 @@ module cpu_sys_pio_0 (
           data_out <= 0;
       else if (clk_en)
           if (wr_strobe)
-              data_out <= (address == 5)? data_out & ~writedata[7 : 0]: (address == 4)? data_out | writedata[7 : 0]: (address == 0)? writedata[7 : 0]: data_out;
+              data_out <= (address == 5)? data_out & ~writedata[31 : 0]: (address == 4)? data_out | writedata[31 : 0]: (address == 0)? writedata[31 : 0]: data_out;
     end
 
 
@@ -177,6 +177,294 @@ module cpu_sys_pio_0 (
               edge_capture[7] <= 0;
           else if (edge_detect[7])
               edge_capture[7] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[8] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[8] <= 0;
+          else if (edge_detect[8])
+              edge_capture[8] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[9] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[9] <= 0;
+          else if (edge_detect[9])
+              edge_capture[9] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[10] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[10] <= 0;
+          else if (edge_detect[10])
+              edge_capture[10] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[11] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[11] <= 0;
+          else if (edge_detect[11])
+              edge_capture[11] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[12] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[12] <= 0;
+          else if (edge_detect[12])
+              edge_capture[12] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[13] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[13] <= 0;
+          else if (edge_detect[13])
+              edge_capture[13] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[14] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[14] <= 0;
+          else if (edge_detect[14])
+              edge_capture[14] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[15] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[15] <= 0;
+          else if (edge_detect[15])
+              edge_capture[15] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[16] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[16] <= 0;
+          else if (edge_detect[16])
+              edge_capture[16] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[17] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[17] <= 0;
+          else if (edge_detect[17])
+              edge_capture[17] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[18] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[18] <= 0;
+          else if (edge_detect[18])
+              edge_capture[18] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[19] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[19] <= 0;
+          else if (edge_detect[19])
+              edge_capture[19] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[20] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[20] <= 0;
+          else if (edge_detect[20])
+              edge_capture[20] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[21] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[21] <= 0;
+          else if (edge_detect[21])
+              edge_capture[21] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[22] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[22] <= 0;
+          else if (edge_detect[22])
+              edge_capture[22] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[23] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[23] <= 0;
+          else if (edge_detect[23])
+              edge_capture[23] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[24] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[24] <= 0;
+          else if (edge_detect[24])
+              edge_capture[24] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[25] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[25] <= 0;
+          else if (edge_detect[25])
+              edge_capture[25] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[26] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[26] <= 0;
+          else if (edge_detect[26])
+              edge_capture[26] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[27] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[27] <= 0;
+          else if (edge_detect[27])
+              edge_capture[27] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[28] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[28] <= 0;
+          else if (edge_detect[28])
+              edge_capture[28] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[29] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[29] <= 0;
+          else if (edge_detect[29])
+              edge_capture[29] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[30] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[30] <= 0;
+          else if (edge_detect[30])
+              edge_capture[30] <= -1;
+    end
+
+
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          edge_capture[31] <= 0;
+      else if (clk_en)
+          if (edge_capture_wr_strobe)
+              edge_capture[31] <= 0;
+          else if (edge_detect[31])
+              edge_capture[31] <= -1;
     end
 
 

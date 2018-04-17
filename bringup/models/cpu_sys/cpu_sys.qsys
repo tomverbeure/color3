@@ -115,7 +115,7 @@
  <parameter name="projectName" value="" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1523680497722" />
+ <parameter name="timeStamp" value="1523926323784" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="pll_sdram_clk" internal="altpll_0.c1" type="clock" dir="start" />
@@ -483,7 +483,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="8" />
+  <parameter name="width" value="32" />
   <parameter name="clockRate" value="20000000" />
  </module>
  <module

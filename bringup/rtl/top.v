@@ -101,7 +101,7 @@ module top(
 		global_reset_n 	<= 1'b1;
 	end
 
-	wire [7:0] pio_in, pio_out;
+	wire [31:0] pio_in, pio_out;
 
 	cpu_sys u_cpu_sys(
 		.pll_areset_export	(pll_areset),
