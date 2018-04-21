@@ -2,6 +2,10 @@
 
 require 'pp'
 
+# I2C Addresses:
+# 0x60, 0x68 (0x0x62, 0x6a): local fixed 
+# 0x64, 0xc0, 0xe0: prorammable
+
 SII9233Regs = {
     0x60 => {
         0x00 => [ "Chip Vendor ID (l)" ],
@@ -19,7 +23,10 @@ SII9233Regs = {
         0x0f => [ "System Pclk Stop" ],
         0x10 => [ "Hot plug Control" ],
         0x11 => [ "CEC Config" ],
+        0x14 => [ "Unknown 0x14" ],
         0x15 => [ "Slave Addr XVYCC" ],
+        0x16 => [ "Slave Addr Reserved 1" ],
+        0x17 => [ "Slave Addr Reserved 2" ],
         0x18 => [ "Slave Addr CEC"   ],
         0x19 => [ "Slave Addr EDID"  ],
         0x31 => [ "HDCP Debug" ],
@@ -159,21 +166,39 @@ class I2CPacket
         self.data << data
     end
 
+    def reg_info(addr, reg_nr)
+        reg_info = (SII9233Regs[ addr ][ reg_nr ] ) rescue nil
+        if reg_info == nil
+            reg_info = (SII9233Regs[ 0x00 ][ reg_nr ] ) rescue nil
+            if reg_info == nil
+                reg_info = [ "<Unknown>" ]
+            end
+        end
+
+        reg_info
+    end
+
+    def reg_name(addr, reg_nr)
+        self.reg_info(addr, reg_nr)[0]
+    end
+
     def to_s
         s = ""
         if self.wr
             addr = self.addr & 0xfe
 
-            reg_info = (SII9233Regs[ addr ][ self.reg_nr ] ) rescue nil
-            if reg_info == nil
-		reg_info = (SII9233Regs[ 0x00 ][ self.reg_nr ] ) rescue nil
-		if reg_info == nil
-              	    reg_info = [ "<Unknown>" ]
-		end
-            end
+            if self.data.size > 0 && self.addr != 0xEE && self.reg_nr !=  0x03
 
-            if reg_info && self.wr
-                s += reg_info[0] + "\n"
+                reg_names = []
+                0.upto(self.data.size-1) do |idx|
+                    r = self.reg_name(addr, self.reg_nr + idx)
+                    v = self.data[idx].value
+                    reg_names << "%s = 0x%02x" % [ r, v]
+                end
+
+                s += reg_names.join(",\n") + "\n"
+            else
+                s += self.reg_name(addr, self.reg_nr) + "\n"
             end
 
             s += "    %.06f: p %4d: a 0x%02x: wr reg 0x%02x (%s) : " % [ self.time, self.packet_id, self.addr, self.reg_nr, self.ack ? "A":"N" ]
