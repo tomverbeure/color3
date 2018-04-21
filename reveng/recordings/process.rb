@@ -2,6 +2,78 @@
 
 require 'pp'
 
+SII9233Regs = {
+    0x60 => {
+        0x00 => [ "Chip Present" ],
+        0x02 => [ "Chip ID (l)" ],
+        0x03 => [ "Chip ID (h)" ],
+        0x04 => [ "Chip Rev" ],
+        0x05 => [ "SW Reset" ],
+        0x06 => [ "System Status" ],
+        0x07 => [ "SW Reset 2" ],
+        0x08 => [ "System Ctrl 1" ],
+        0x09 => [ "Port Switch" ],
+        0x0a => [ "Port Switch 2" ],
+        0x0b => [ "System SW Reset 2" ],
+        0x0f => [ "System Pclk Stop" ],
+        0x10 => [ "Hot plug Control" ],
+        0x11 => [ "CEC Config" ],
+        0x15 => [ "Slave Addr XVYCC" ],
+        0x18 => [ "Slave Addr CEC"   ],
+        0x19 => [ "Slave Addr EDID"  ],
+        0x31 => [ "HDCP Debug" ],
+        0x3a => [ "Video Input H Resolution (l)" ],
+        0x3b => [ "Video Input H Resolution (h)" ],
+        0x3c => [ "Video Input V Resolution (l)" ],
+        0x3d => [ "Video Input V Resolution (h)" ],
+        0x4e => [ "Video Input DE Pixel (l)" ],
+        0x4f => [ "Video Input DE Pixel (h)" ],
+        0x50 => [ "Video Input DE Line (l)" ],
+        0x51 => [ "Video Input DE Line (h)" ],
+        0x52 => [ "Video V Sync to Active Video Lines" ],
+        0x53 => [ "Video V Front Porch" ],
+        0x59 => [ "Video H Front Porch (l)" ],
+        0x5a => [ "Video H Front Porch (h)" ],
+        0x5b => [ "Video H Sync Width (l)" ],
+        0x5c => [ "Video H Sync Width (h)" ],
+        0x48 => [ "Video Control" ],
+        0x49 => [ "Video Mode 2" ],
+        0x5f => [ "Auto Output Format" ],
+        0x61 => [ "Deep Color Status" ],
+        0x69 => [ "Video Channel PCLK Count Base" ],
+        0x6a => [ "XCLK to PCLK Update" ],
+        0x6e => [ "Pixel Clock Timing (l)" ],
+        0x6f => [ "Pixel Clock Timing (h)" ],
+        0x70 => [ "Interrupt Status" ],
+        0x71 => [ "Interrupt Status 1" ],
+        0x72 => [ "Interrupt Status 2" ],
+        0x73 => [ "Interrupt Status 3" ],
+        0x74 => [ "Interrupt Status 4" ],
+        0x75 => [ "Interrupt Unmask 1" ],
+        0x77 => [ "Interrupt Unmask 3" ],
+        0x7a => [ "Interrupt Info Frame Control" ],
+        0x7b => [ "Interrupt Status 5" ],
+        0x7c => [ "Interrupt Status 6" ],
+        0x7d => [ "Interrupt Unmask 5" ],
+        0x7e => [ "Interrupt Unmask 6" ],
+        0x81 => [ "TMDS Analog Control 2" ],
+        0x82 => [ "TMDS Termination Control" ],
+        0x83 => [ "TMDS Termination Control 2" ],
+        0x88 => [ "ACR Configuration 1" ],
+        0x89 => [ "ACR Configuration 2" ],
+        0x90 => [ "Interrupt Status 7" ],
+        0x91 => [ "Interrupt Status 8" ],
+        0x92 => [ "Interrupt Unmask 7" ],
+        0x93 => [ "Interrupt Unmask 8" ],
+        0x94 => [ "INFM_CLR" ],
+        0xB4 => [ "Auto Audio Unmute Control" ],
+        0xB5 => [ "Auto Exception Control" ],
+        0xB6 => [ "AEC Exception Enable 1" ],
+        0xBA => [ "AEC Exception Enable 2" ],
+        0xBB => [ "AEC Exception Enable 3" ],
+    }
+}
+
 class I2CData
     attr_accessor :value, :time, :ack
 
@@ -34,9 +106,21 @@ class I2CPacket
     def to_s
         s = ""
         if self.wr
-            s += "%.06f: p %4d: a 0x%02x: wr reg 0x%02x (%s) : " % [ self.time, self.packet_id, self.addr, self.reg_nr, self.ack ? "A":"N" ]
+            addr = self.addr & 0xfe
+
+            reg_info = (SII9233Regs[ addr ][ self.reg_nr ] ) rescue nil
+            if reg_info == nil
+                reg_info = [ "<Unknown>" ]
+            end
+
+            if reg_info && self.wr
+                s += reg_info[0] + "\n"
+            end
+
+            s += "    %.06f: p %4d: a 0x%02x: wr reg 0x%02x (%s) : " % [ self.time, self.packet_id, self.addr, self.reg_nr, self.ack ? "A":"N" ]
+
         else
-            s += "%.06f: p %4d: a 0x%02x: rd              : " % [ self.time, self.packet_id, self.addr, self.ack ? "A":"N" ]
+            s += "    %.06f: p %4d: a 0x%02x: rd              : " % [ self.time, self.packet_id, self.addr, self.ack ? "A":"N" ]
         end
 
         self.data.each_with_index do |d|
