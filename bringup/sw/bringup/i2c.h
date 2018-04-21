@@ -9,6 +9,8 @@ typedef struct {
 
 void i2c_init(i2c_ctx_t *ctx);
 void i2c_dly();
+void i2c_start(i2c_ctx_t *ctx);
+void i2c_stop(i2c_ctx_t *ctx);
 unsigned char i2c_rx(i2c_ctx_t *ctx, char ack);
 int i2c_tx(i2c_ctx_t *ctx, unsigned char d);
 int i2c_write_buf(i2c_ctx_t *ctx, byte addr, byte* data, int len);
