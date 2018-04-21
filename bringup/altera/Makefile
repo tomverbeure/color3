@@ -8,5 +8,5 @@ check:
 	~/altera/13.0sp1/quartus/bin/quartus_pgm -c "USB-Blaster [1-1]" -a
 
 pgm:
-	~/altera/13.0sp1/quartus/bin/quartus_pgm --64bit -c "USB-Blaster [1-1]" pgm_sof.cdf
+	~/altera/13.0sp1/quartus/bin/quartus_pgm -c "USB-Blaster [1-1]" bringup.cdf
 
