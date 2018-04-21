@@ -315,6 +315,7 @@ set_location_assignment PIN_Y4 -to sii9233_int
 
 set_location_assignment PIN_V4 -to sii9233_cscl
 set_location_assignment PIN_V5 -to sii9233_csda
+set_location_assignment PIN_T4 -to sii9233_ci2ca
 
 set_location_assignment PIN_AB11 -to sii9233_odck
 set_location_assignment PIN_J4 -to sii9233_vsync
@@ -364,6 +365,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_vsync
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_odck
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_cscl
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_csda
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_ci2ca
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_de
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_hsync
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_int
