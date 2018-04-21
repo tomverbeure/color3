@@ -38,6 +38,7 @@ module top(
 	input		sii9233_int,
 	inout		sii9233_cscl,
 	inout		sii9233_csda,
+	output		sii9233_ci2ca,
 
 	input 		sii9233_de		/* synthesis keep */,
 	input 		sii9233_hsync		/* synthesis keep */,
@@ -143,6 +144,7 @@ module top(
 	assign sii9233_reset_ = pio_out[13];
 	assign sii9233_csda   = pio_out[14] ? 1'bz : 1'b0;
 	assign sii9233_cscl   = pio_out[15] ? 1'bz : 1'b0;
+	assign sii9233_ci2ca  = 1'b0;		// Select addresses 0x60/0x68 instead of 0x62/0x6a
 
 	reg [25:0] sdram_cntr /* synthesis keep */;
 	always @(posedge sdram_clk) begin
