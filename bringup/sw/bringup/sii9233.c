@@ -7,7 +7,7 @@
 #include "i2c.h"
 #include "sii9233.h"
 
-#if 0
+#if 1
 #define SII9233_I2C_ADDR_RPI	0x60
 #define SII9233_I2C_ADDR_CONF	0x68
 #else
