@@ -53,6 +53,7 @@ module top(
 	input 		sii9136_int,
 	inout 		sii9136_cscl,
 	inout 		sii9136_csda,
+	output 		sii9136_ci2ca,
 
 	output wire 	sii9136_idck,
 	output reg 	sii9136_de,
@@ -136,6 +137,7 @@ module top(
 	assign sii9136_reset_ = pio_out[5];
 	assign sii9136_csda   = pio_out[6] ? 1'bz : 1'b0;
 	assign sii9136_cscl   = pio_out[7] ? 1'bz : 1'b0;
+	assign sii9136_ci2ca  = 1'b0;
 
 	assign pio_in[12]     = sii9233_int;
 	assign pio_in[14]     = sii9233_csda;

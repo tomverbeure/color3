@@ -218,6 +218,7 @@ set_location_assignment PIN_AA20 -to sii9136_int
 
 set_location_assignment PIN_W20 -to sii9136_cscl
 set_location_assignment PIN_U20 -to sii9136_csda
+set_location_assignment PIN_U19 -to sii9136_ci2ca
 
 set_location_assignment PIN_R16 -to sii9136_idck
 set_location_assignment PIN_H19 -to sii9136_vsync
@@ -263,6 +264,7 @@ set_location_assignment PIN_C22 -to sii9136_d[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_vsync
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_cscl
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_csda
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_ci2ca
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_de
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_hsync
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9136_idck
