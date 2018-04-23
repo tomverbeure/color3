@@ -106,7 +106,7 @@ module top(
 		.pll_ref_clk_clk	(osc25_pad_in),
 
 		.pll_sdram_clk_clk	(sdram_clk),
-		.vid_clk_clk		(vid_clk), 
+		.vid_clk_clk		(), 
 		.pll_cpu_clk_clk	(cpu_clk),
 
 		.pll_phasedone_export	(pll_phase_done),
@@ -188,23 +188,32 @@ module top(
 		end
 	end
 
-	assign 	sii9136_idck = vid_clk;
+    assign vid_clk = sii9233_odck;
+	assign sii9136_idck = vid_clk;
+
+//	always @(posedge vid_clk) begin
+//		sii9136_de    <= (line_cntr >= v_blank) && (col_cntr >= h_blank);
+//		sii9136_hsync <= col_cntr >= h_front && col_cntr < h_front + h_sync;
+//		sii9136_vsync <= line_cntr >= v_front && line_cntr < v_front + v_sync;
+//
+//		if (line_cntr < offset_cntr + v_blank) begin
+//			sii9136_d[35:24] <= {12{1'b1}};
+//			sii9136_d[23:12] <= line_cntr << 3;
+//			sii9136_d[11: 0] <= col_cntr << 3;
+//		end
+//		else begin
+//			sii9136_d[35:24] <= line_cntr << 3;
+//			sii9136_d[23:12] <= {12{1'b1}};
+//			sii9136_d[11: 0] <= col_cntr << 3;
+//		end
+//	end
 
 	always @(posedge vid_clk) begin
-		sii9136_de    <= (line_cntr >= v_blank) && (col_cntr >= h_blank);
-		sii9136_hsync <= col_cntr >= h_front && col_cntr < h_front + h_sync;
-		sii9136_vsync <= line_cntr >= v_front && line_cntr < v_front + v_sync;
+		sii9136_de    <= sii9233_de;
+		sii9136_hsync <= sii9233_hsync;
+		sii9136_vsync <= sii9233_vsync;
 
-		if (line_cntr < offset_cntr + v_blank) begin
-			sii9136_d[35:24] <= {12{1'b1}};
-			sii9136_d[23:12] <= line_cntr << 3;
-			sii9136_d[11: 0] <= col_cntr << 3;
-		end
-		else begin
-			sii9136_d[35:24] <= line_cntr << 3;
-			sii9136_d[23:12] <= {12{1'b1}};
-			sii9136_d[11: 0] <= col_cntr << 3;
-		end
+		sii9136_d <= sii9233_q;
 	end
 
 endmodule

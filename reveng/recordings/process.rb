@@ -343,6 +343,7 @@ all_packets.each do |p|
 
     if nil
         real_write = p.wr && p.data.size > 0 
+#        print real_write ? "W":"R"
         puts "%5d: %s" % [ p.packet_id, (real_write ? "W":"R") ]
         if real_write
             puts p.to_s
