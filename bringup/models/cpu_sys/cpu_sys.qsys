@@ -24,7 +24,7 @@
    {
       datum baseAddress
       {
-         value = "20576";
+         value = "69680";
          type = "String";
       }
    }
@@ -48,7 +48,7 @@
    {
       datum baseAddress
       {
-         value = "18432";
+         value = "67584";
          type = "String";
       }
    }
@@ -80,15 +80,7 @@
    {
       datum baseAddress
       {
-         value = "20560";
-         type = "String";
-      }
-   }
-   element cpu_mem.s1
-   {
-      datum baseAddress
-      {
-         value = "8192";
+         value = "69664";
          type = "String";
       }
    }
@@ -96,7 +88,15 @@
    {
       datum baseAddress
       {
-         value = "20512";
+         value = "69632";
+         type = "String";
+      }
+   }
+   element cpu_mem.s1
+   {
+      datum baseAddress
+      {
+         value = "32768";
          type = "String";
       }
    }
@@ -115,7 +115,7 @@
  <parameter name="projectName" value="" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1523926323784" />
+ <parameter name="timeStamp" value="1524444137481" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="pll_sdram_clk" internal="altpll_0.c1" type="clock" dir="start" />
@@ -416,8 +416,8 @@
   <parameter name="ocimem_ramBlockType" value="Automatic" />
   <parameter name="mmu_ramBlockType" value="Automatic" />
   <parameter name="bht_ramBlockType" value="Automatic" />
-  <parameter name="instAddrWidth" value="15" />
-  <parameter name="dataAddrWidth" value="15" />
+  <parameter name="instAddrWidth" value="17" />
+  <parameter name="dataAddrWidth" value="17" />
   <parameter name="tightlyCoupledDataMaster0AddrWidth" value="1" />
   <parameter name="tightlyCoupledDataMaster1AddrWidth" value="1" />
   <parameter name="tightlyCoupledDataMaster2AddrWidth" value="1" />
@@ -426,8 +426,8 @@
   <parameter name="tightlyCoupledInstructionMaster1AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_mem.s1' start='0x2000' end='0x4000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x4800' end='0x5000' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='cpu_mem.s1' start='0x2000' end='0x4000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x4800' end='0x5000' /><slave name='pio_0.s1' start='0x5020' end='0x5040' /><slave name='altpll_0.pll_slave' start='0x5050' end='0x5060' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x5060' end='0x5068' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_mem.s1' start='0x8000' end='0x10000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x10800' end='0x11000' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='cpu_mem.s1' start='0x8000' end='0x10000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x10800' end='0x11000' /><slave name='pio_0.s1' start='0x11000' end='0x11020' /><slave name='altpll_0.pll_slave' start='0x11020' end='0x11030' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x11030' end='0x11038' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="20000000" />
   <parameter name="deviceFamilyName" value="Cyclone IV E" />
   <parameter name="internalIrqMaskSystemInfo" value="0" />
@@ -454,7 +454,7 @@
   <parameter name="initMemContent" value="true" />
   <parameter name="initializationFileName" value="cpu_mem.hex" />
   <parameter name="instanceID" value="NONE" />
-  <parameter name="memorySize" value="8192" />
+  <parameter name="memorySize" value="32768" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
   <parameter name="simAllowMRAMContentsFile" value="false" />
   <parameter name="simMemInitOnlyFilename" value="0" />
@@ -510,7 +510,7 @@
    start="nios2_qsys_0.data_master"
    end="nios2_qsys_0.jtag_debug_module">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4800" />
+  <parameter name="baseAddress" value="0x00010800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -529,7 +529,7 @@
    start="nios2_qsys_0.data_master"
    end="altpll_0.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5050" />
+  <parameter name="baseAddress" value="0x00011020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -543,7 +543,7 @@
    start="nios2_qsys_0.data_master"
    end="cpu_mem.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -552,7 +552,7 @@
    start="nios2_qsys_0.instruction_master"
    end="cpu_mem.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -576,7 +576,7 @@
    start="nios2_qsys_0.data_master"
    end="pio_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5020" />
+  <parameter name="baseAddress" value="0x00011000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -603,7 +603,7 @@
    start="nios2_qsys_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5060" />
+  <parameter name="baseAddress" value="0x00011030" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -612,7 +612,7 @@
    start="nios2_qsys_0.instruction_master"
    end="nios2_qsys_0.jtag_debug_module">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4800" />
+  <parameter name="baseAddress" value="0x00010800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 17, 2018 2:51:21 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1523933481612</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 23, 2018 12:45:02 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1524444302563</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/vagrant/projects/color3/bringup/sw/bringup_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo</SopcDesignFile>
@@ -864,25 +864,25 @@
         </Setting>
         <MemoryMap>
                 <slaveDescriptor>cpu_mem</slaveDescriptor>
-                <addressRange>0x00002000 - 0x00003FFF</addressRange>
-                <addressSpan>8192</addressSpan>
+                <addressRange>0x00008000 - 0x0000FFFF</addressRange>
+                <addressSpan>32768</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>pio_0</slaveDescriptor>
-                <addressRange>0x00005020 - 0x0000503F</addressRange>
+                <addressRange>0x00011000 - 0x0001101F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>altpll_0</slaveDescriptor>
-                <addressRange>0x00005050 - 0x0000505F</addressRange>
+                <addressRange>0x00011020 - 0x0001102F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00005060 - 0x00005067</addressRange>
+                <addressRange>0x00011030 - 0x00011037</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

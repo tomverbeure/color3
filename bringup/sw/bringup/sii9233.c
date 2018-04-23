@@ -50,6 +50,15 @@ void sii9233_dev_id(unsigned int *dev_id, unsigned int *rev)
 	*rev = id[2];
 }
 
+unsigned char sii9233_system_status()
+{
+    byte value;
+
+	i2c_read_reg(&sii9233_i2c_ctx, 0x60, 0x06, &value);
+
+    return value;
+}
+
 void sii9233_reset()
 {
 	// Toggle reset pin
@@ -80,5 +89,12 @@ void sii9233_reset()
 
 void sii9233_init()
 {
+#include "sii9233_init.h"
+}
+
+void sii9233_unconn_to_conn()
+{
+//#include "../../../reveng/recordings/sii9233_conn.h"
+#include "sii9233_conn.h"
 }
 

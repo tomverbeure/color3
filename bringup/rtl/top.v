@@ -53,6 +53,7 @@ module top(
 	input 		sii9136_int,
 	inout 		sii9136_cscl,
 	inout 		sii9136_csda,
+	output 		sii9136_ci2ca,
 
 	output wire 	sii9136_idck,
 	output reg 	sii9136_de,
@@ -105,7 +106,7 @@ module top(
 		.pll_ref_clk_clk	(osc25_pad_in),
 
 		.pll_sdram_clk_clk	(sdram_clk),
-		.vid_clk_clk		(vid_clk), 
+		.vid_clk_clk		(), 
 		.pll_cpu_clk_clk	(cpu_clk),
 
 		.pll_phasedone_export	(pll_phase_done),
@@ -136,6 +137,7 @@ module top(
 	assign sii9136_reset_ = pio_out[5];
 	assign sii9136_csda   = pio_out[6] ? 1'bz : 1'b0;
 	assign sii9136_cscl   = pio_out[7] ? 1'bz : 1'b0;
+	assign sii9136_ci2ca  = 1'b0;
 
 	assign pio_in[12]     = sii9233_int;
 	assign pio_in[14]     = sii9233_csda;
@@ -163,46 +165,112 @@ module top(
 
 	reg [11:0] col_cntr;
 	reg [11:0] line_cntr;
-	reg [11:0] offset_cntr;
+	reg [11:0] frame_cntr;
+    reg first_pixel_seen;
+    reg [11:0] x_pos, y_pos;
+    reg x_dir, y_dir;
+    reg sii9233_vsync_d, sii9233_hsync_d;
+
+    localparam bounce_width = 600;
+    localparam bounce_height = 430;
+    localparam square_width = 40;
+    localparam square_height = 40;
 
 	always @(posedge vid_clk) begin
-		if (col_cntr < h_total-1) begin
-			col_cntr <= col_cntr + 1;
-		end
-		else if (line_cntr < v_total-1) begin
-			line_cntr <= line_cntr + 1;
-			col_cntr <= 0;
-		end
-		else begin
+        if (sii9233_vsync && !sii9233_vsync_d) begin
 			line_cntr <= 0;
 			col_cntr <= 0;
+            first_pixel_seen <= 1'b0;
 
-			if (offset_cntr < v_active-1) begin
-				offset_cntr <= offset_cntr + 1;
-			end
-			else begin
-				offset_cntr <= 0;
-			end
+            frame_cntr <= frame_cntr + 1;
+
+            if (!x_dir) begin 
+                x_pos <= x_pos + 2;
+                
+                if (x_pos >= bounce_width) begin
+                    x_dir <= 1'b1;
+                end
+            end
+            else begin
+                x_pos <= x_pos - 2;
+                
+                if (x_pos == 2) begin
+                    x_dir <= 1'b0;
+                end
+            end
+
+            if (!y_dir) begin 
+                y_pos <= y_pos + 2;
+                
+                if (y_pos >= bounce_height) begin
+                    y_dir <= 1'b1;
+                end
+            end
+            else begin
+                y_pos <= y_pos - 2;
+                
+                if (y_pos == 2) begin
+                    y_dir <= 1'b0;
+                end
+            end
+
+        end
+        else if (sii9233_hsync && !sii9233_hsync_d) begin
+			col_cntr <= 0;
+            line_cntr <= line_cntr + first_pixel_seen;
 		end
+        else if (sii9233_de) begin
+            col_cntr <= col_cntr + 1;
+            first_pixel_seen <= 1'b1;
+        end
+
+        sii9233_vsync_d <= sii9233_vsync;
+        sii9233_hsync_d <= sii9233_hsync;
 	end
 
-	assign 	sii9136_idck = vid_clk;
+    assign vid_clk = sii9233_odck;
+	assign sii9136_idck = vid_clk;
+
+//	always @(posedge vid_clk) begin
+//		sii9136_de    <= (line_cntr >= v_blank) && (col_cntr >= h_blank);
+//		sii9136_hsync <= col_cntr >= h_front && col_cntr < h_front + h_sync;
+//		sii9136_vsync <= line_cntr >= v_front && line_cntr < v_front + v_sync;
+//
+//		if (line_cntr < offset_cntr + v_blank) begin
+//			sii9136_d[35:24] <= {12{1'b1}};
+//			sii9136_d[23:12] <= line_cntr << 3;
+//			sii9136_d[11: 0] <= col_cntr << 3;
+//		end
+//		else begin
+//			sii9136_d[35:24] <= line_cntr << 3;
+//			sii9136_d[23:12] <= {12{1'b1}};
+//			sii9136_d[11: 0] <= col_cntr << 3;
+//		end
+//	end
+
+
+    wire [7:0] input_r = sii9233_q[35:28];
+    wire [7:0] input_g = sii9233_q[23:16];
+    wire [7:0] input_b = sii9233_q[11: 4];
 
 	always @(posedge vid_clk) begin
-		sii9136_de    <= (line_cntr >= v_blank) && (col_cntr >= h_blank);
-		sii9136_hsync <= col_cntr >= h_front && col_cntr < h_front + h_sync;
-		sii9136_vsync <= line_cntr >= v_front && line_cntr < v_front + v_sync;
+		sii9136_de    <= sii9233_de;
+		sii9136_hsync <= sii9233_hsync;
+		sii9136_vsync <= sii9233_vsync;
 
-		if (line_cntr < offset_cntr + v_blank) begin
-			sii9136_d[35:24] <= {12{1'b1}};
-			sii9136_d[23:12] <= line_cntr << 3;
-			sii9136_d[11: 0] <= col_cntr << 3;
-		end
-		else begin
-			sii9136_d[35:24] <= line_cntr << 3;
-			sii9136_d[23:12] <= {12{1'b1}};
-			sii9136_d[11: 0] <= col_cntr << 3;
-		end
+        if (line_cntr >= y_pos && line_cntr <= y_pos+square_height && col_cntr >= x_pos && col_cntr <= x_pos + square_width) begin
+		    sii9136_d[35:24] <= { 1'b0, sii9233_q[35:25] };
+		    sii9136_d[23:12] <= { 1'b0, sii9233_q[23:13] };
+		    sii9136_d[11: 0] <= { 1'b0, sii9233_q[11: 1] };
+        end
+        else if (input_r > 192 && input_g < 32 && input_b < 32) begin
+		    sii9136_d[35:24] <= sii9233_q[23:12];
+		    sii9136_d[23:12] <= sii9233_q[35:23];
+		    sii9136_d[11: 0] <= sii9233_q[11: 0];
+        end
+        else begin
+		    sii9136_d <= sii9233_q;
+        end
 	end
 
 endmodule

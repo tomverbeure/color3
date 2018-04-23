@@ -3,7 +3,7 @@
 # Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'cpu_sys'
 # SOPC Builder design path: /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo
 #
-# Generated: Sat Apr 14 05:47:49 UTC 2018
+# Generated: Mon Apr 23 00:45:03 UTC 2018
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # cpu_mem
-memory 0x2000 0x4000 cache
+memory 0x8000 0x10000 cache

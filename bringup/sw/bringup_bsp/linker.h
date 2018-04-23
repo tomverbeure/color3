@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'cpu_sys'
  * SOPC Builder design path: /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo
  *
- * Generated: Sat Apr 14 05:47:49 UTC 2018
+ * Generated: Mon Apr 23 00:45:03 UTC 2018
  */
 
 /*
@@ -65,9 +65,9 @@
  *
  */
 
-#define CPU_MEM_REGION_BASE 0x2020
-#define CPU_MEM_REGION_SPAN 8160
-#define RESET_REGION_BASE 0x2000
+#define CPU_MEM_REGION_BASE 0x8020
+#define CPU_MEM_REGION_SPAN 32736
+#define RESET_REGION_BASE 0x8000
 #define RESET_REGION_SPAN 32
 
 

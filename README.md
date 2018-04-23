@@ -80,8 +80,11 @@ All voltages on the Silicon Image chips are 3.3V LVTTL.
 
 ## SiI9233 HDMI Receiver
 
-There is a [SiI9233 Linux driver] which contains all the I2C registers etc. This should be sufficient to get
-the chip programmed for non-protected video input.
+There is a [SiI9233 Linux driver] which contains all the I2C registers etc, but I wasn't able to get something
+to work fast enough.
+
+At this time, the HDMI receiver is programmed by simply replaying I2C transactions that were recorded from the original
+product. It works surpringly well!
 
 ## Si9136 HDMI Transmitter
 

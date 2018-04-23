@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'cpu_sys'
  * SOPC Builder design path: /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo
  *
- * Generated: Tue Apr 17 00:58:19 UTC 2018
+ * Generated: Mon Apr 23 00:45:03 UTC 2018
  */
 
 /*
@@ -62,16 +62,16 @@
 
 #define ALT_CPU_ARCHITECTURE "altera_nios2_qsys"
 #define ALT_CPU_BIG_ENDIAN 0
-#define ALT_CPU_BREAK_ADDR 0x4820
+#define ALT_CPU_BREAK_ADDR 0x10820
 #define ALT_CPU_CPU_FREQ 20000000u
 #define ALT_CPU_CPU_ID_SIZE 1
 #define ALT_CPU_CPU_ID_VALUE 0x00000000
 #define ALT_CPU_CPU_IMPLEMENTATION "tiny"
-#define ALT_CPU_DATA_ADDR_WIDTH 0xf
+#define ALT_CPU_DATA_ADDR_WIDTH 0x11
 #define ALT_CPU_DCACHE_LINE_SIZE 0
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 0
 #define ALT_CPU_DCACHE_SIZE 0
-#define ALT_CPU_EXCEPTION_ADDR 0x2020
+#define ALT_CPU_EXCEPTION_ADDR 0x8020
 #define ALT_CPU_FLUSHDA_SUPPORTED
 #define ALT_CPU_FREQ 20000000
 #define ALT_CPU_HARDWARE_DIVIDE_PRESENT 0
@@ -83,9 +83,9 @@
 #define ALT_CPU_ICACHE_LINE_SIZE 0
 #define ALT_CPU_ICACHE_LINE_SIZE_LOG2 0
 #define ALT_CPU_ICACHE_SIZE 0
-#define ALT_CPU_INST_ADDR_WIDTH 0xf
+#define ALT_CPU_INST_ADDR_WIDTH 0x11
 #define ALT_CPU_NAME "nios2_qsys_0"
-#define ALT_CPU_RESET_ADDR 0x2000
+#define ALT_CPU_RESET_ADDR 0x8000
 
 
 /*
@@ -94,16 +94,16 @@
  */
 
 #define NIOS2_BIG_ENDIAN 0
-#define NIOS2_BREAK_ADDR 0x4820
+#define NIOS2_BREAK_ADDR 0x10820
 #define NIOS2_CPU_FREQ 20000000u
 #define NIOS2_CPU_ID_SIZE 1
 #define NIOS2_CPU_ID_VALUE 0x00000000
 #define NIOS2_CPU_IMPLEMENTATION "tiny"
-#define NIOS2_DATA_ADDR_WIDTH 0xf
+#define NIOS2_DATA_ADDR_WIDTH 0x11
 #define NIOS2_DCACHE_LINE_SIZE 0
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 0
 #define NIOS2_DCACHE_SIZE 0
-#define NIOS2_EXCEPTION_ADDR 0x2020
+#define NIOS2_EXCEPTION_ADDR 0x8020
 #define NIOS2_FLUSHDA_SUPPORTED
 #define NIOS2_HARDWARE_DIVIDE_PRESENT 0
 #define NIOS2_HARDWARE_MULTIPLY_PRESENT 0
@@ -114,8 +114,8 @@
 #define NIOS2_ICACHE_LINE_SIZE 0
 #define NIOS2_ICACHE_LINE_SIZE_LOG2 0
 #define NIOS2_ICACHE_SIZE 0
-#define NIOS2_INST_ADDR_WIDTH 0xf
-#define NIOS2_RESET_ADDR 0x2000
+#define NIOS2_INST_ADDR_WIDTH 0x11
+#define NIOS2_RESET_ADDR 0x8000
 
 
 /*
@@ -145,19 +145,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_0"
-#define ALT_STDERR_BASE 0x5060
+#define ALT_STDERR_BASE 0x11030
 #define ALT_STDERR_DEV jtag_uart_0
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x5060
+#define ALT_STDIN_BASE 0x11030
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x5060
+#define ALT_STDOUT_BASE 0x11030
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -170,7 +170,7 @@
  *
  */
 
-#define ALTPLL_0_BASE 0x5050
+#define ALTPLL_0_BASE 0x11020
 #define ALTPLL_0_IRQ -1
 #define ALTPLL_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ALTPLL_0_NAME "/dev/altpll_0"
@@ -187,7 +187,7 @@
 #define ALT_MODULE_CLASS_cpu_mem altera_avalon_onchip_memory2
 #define CPU_MEM_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 0
 #define CPU_MEM_ALLOW_MRAM_SIM_CONTENTS_ONLY_FILE 0
-#define CPU_MEM_BASE 0x2000
+#define CPU_MEM_BASE 0x8000
 #define CPU_MEM_CONTENTS_INFO ""
 #define CPU_MEM_DUAL_PORT 0
 #define CPU_MEM_GUI_RAM_BLOCK_TYPE "AUTO"
@@ -202,8 +202,8 @@
 #define CPU_MEM_READ_DURING_WRITE_MODE "DONT_CARE"
 #define CPU_MEM_SINGLE_CLOCK_OP 0
 #define CPU_MEM_SIZE_MULTIPLE 1
-#define CPU_MEM_SIZE_VALUE 8192
-#define CPU_MEM_SPAN 8192
+#define CPU_MEM_SIZE_VALUE 32768
+#define CPU_MEM_SPAN 32768
 #define CPU_MEM_TYPE "altera_avalon_onchip_memory2"
 #define CPU_MEM_WRITABLE 1
 
@@ -224,7 +224,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x5060
+#define JTAG_UART_0_BASE 0x11030
 #define JTAG_UART_0_IRQ -1
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -242,7 +242,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_0 altera_avalon_pio
-#define PIO_0_BASE 0x5020
+#define PIO_0_BASE 0x11000
 #define PIO_0_BIT_CLEARING_EDGE_REGISTER 0
 #define PIO_0_BIT_MODIFYING_OUTPUT_REGISTER 1
 #define PIO_0_CAPTURE 1

@@ -7,7 +7,7 @@
 #include "i2c.h"
 #include "sii9136.h"
 
-#if 0
+#if 1
 #define SII9136_I2C_ADDR_TPI	0x72
 #define SII9136_I2C_ADDR_CONF	0x7A
 #define SII9136_I2C_ADDR_CPI	0xC0

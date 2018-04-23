@@ -14,4 +14,7 @@ void sii9233_dev_id(unsigned int *dev_id, unsigned int *rev);
 void sii9233_reset();
 void sii9233_init();
 
+unsigned char sii9233_system_status();
+void sii9233_unconn_to_conn();
+
 #endif
