@@ -66,14 +66,12 @@ Since all major chips are using LVTTL compatilbe IOs, all FPGA IO banks are set 
 
 # Silicon Image Chips
 
-One of the really nice features of the Silicon Image chips is that they support HDCP 1.4. This version of
-HDCP may be completely broken (with a little bit of googling, everybody could create their own keys if they
-wanted to), but it's still pretty much impossible for a hobbyist decode live HDCP 'protected' video content.
+The chips on this board can convert pretty much any known HDMI format to parallel and back. 8bit, 10bit, 12bit color, YUV, etc.
 
-With this board, one should be able to work around that.
+In addition to that, the chips also convert from HDMI audio to I2S and back. However, the I2S outputs of the HDMI receiver are
+connected straight to the I2S inputs of the HDMI transmitter, so there is no possibility for the FPGA to manipulate audio.
 
-A big caveat here is that the programming guide for these chips is available only under NDA for HDCP license
-holders.
+A big caveat with all of this is that the programming guide for these chips is available only under NDA.
 
 The best we can hope for is that somebody can get these chips to work by spying transactions on the I2C bus that runs
 between the FPGA and the SI chips.
