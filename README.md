@@ -116,6 +116,21 @@ The SDRAM runs 3.3V as well.
 
 Like the SI chips, the SDRAM IO pins are 3.3V LVTTL compatiable as well.
 
+The Micron SDRAM has an 8MB capacity, organized as 4Mx16b. At 133MHz, this gives a total theoretical peak bandwidth of
+2.13 Gbps. If we assume an 80% efficiency, that number goes down to 1.7Gbps.
+
+If we look at the bandwidth requirements of some common video formats, we get roughly the following:
+* 1080p@60 24bpp: 3.0 Gbps
+* 1080p@24 24bpp: 1.2 Gbps
+* 720p@60 24bpp: 1.33 Gbps
+* 720p@24 24bpp: 0.53 Gbps
+
+Those numbers are one way only, of course, and need to be doubled if we want to frame buffer live video.
+
+So for really complex live video manipulations, we can do 720p@24 at best, if we don't use any kind of compression.
+
+That doesn't mean it's useless: at 1080p, the DRAM can still be use to store compressed still images (at lower resolution), sub-titles, etc.
+
 # IDT8102 Oscillator
 
 These oscillators can be factory programmed to a wide range of clocks. The one on this board apparently has been programmed to 25MHz.
