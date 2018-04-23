@@ -13,9 +13,10 @@ My log about reverse engineering this board can be found on [this Hackaday proje
 # Status
 
 * All the known important connections to the FPGA have been identified.
-* the `bringup` project configures the SiI9136 HDMI TX chip and successfully sends out a 640x480 test image.
+* the `bringup` project configures the SiI9136 HDMI TX and SiI9233 RX chips, and successfully forwards video from the RX to the
+  TX port while doing some image manipulation on it.
 
-The Hackaday project log will have more detailed information.
+The Hackaday project log has up to date information.
 
 # The Board
 
