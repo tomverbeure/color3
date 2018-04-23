@@ -15,7 +15,9 @@ unsigned char i2c_rx(i2c_ctx_t *ctx, char ack);
 int i2c_tx(i2c_ctx_t *ctx, unsigned char d);
 int i2c_write_buf(i2c_ctx_t *ctx, byte addr, byte* data, int len);
 int i2c_read_buf(i2c_ctx_t *ctx, byte addr, byte *data, int len);
+int i2c_write_reg_nr(i2c_ctx_t *ctx, byte addr, byte reg_nr);
 int i2c_write_reg(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte value);
+int i2c_write_regs(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte *values, int len);
 int i2c_read_reg(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte *value);
 int i2c_read_regs(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte *values, int len);
 

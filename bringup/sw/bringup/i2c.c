@@ -168,12 +168,44 @@ int i2c_read_buf(i2c_ctx_t *ctx, byte addr, byte *data, int len)
 	return 1;
 }
 
+int i2c_write_reg_nr(i2c_ctx_t *ctx, byte addr, byte reg_nr)
+{
+	return i2c_write_buf(ctx, addr, &reg_nr, 1);
+}
+
 int i2c_write_reg(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte value)
 {
 	byte data[2] = { reg_nr, value };
 
 	return i2c_write_buf(ctx, addr, data, 2);
 }
+
+int i2c_write_regs(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte *values, int len)
+{
+	int ack;
+
+	i2c_start(ctx);
+
+	ack = i2c_tx(ctx, addr);
+	if (!ack)
+		return 0;
+
+	ack = i2c_tx(ctx, reg_nr);
+	if (!ack)
+		return 0;
+
+	int i;
+	for(i=0;i<len;++i){
+		ack = i2c_tx(ctx, values[i]);
+		if (!ack)
+			return 0;
+	}
+
+	i2c_stop(ctx);
+
+	return 1;
+}
+
 
 int i2c_read_reg(i2c_ctx_t *ctx, byte addr, byte reg_nr, byte *value)
 {

@@ -15,8 +15,8 @@ int main()
 	sii9136_initialize();
 	sii9233_initialize();
 
-	sii9233_reset();
-	sii9233_init();
+    sii9233_reset();
+    sii9233_init();
 	
 	sii9136_reset();
 	sii9136_init();

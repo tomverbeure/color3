@@ -1,5 +1,5 @@
 Info: Starting: Create simulation model
-Info: ip-generate --project-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/ --output-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/ --file-set=SIM_VERILOG --report-file=sopcinfo:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo --report-file=html:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.html --report-file=sip:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/cpu_sys.sip --report-file=csv:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.csv --report-file=spd:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.spd --report-file=cmp:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.cmp --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.qsys
+Info: ip-generate --project-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/ --output-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/ --file-set=SIM_VERILOG --report-file=sopcinfo:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.sopcinfo --report-file=html:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.html --report-file=sip:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/cpu_sys.sip --report-file=csv:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.csv --report-file=spd:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.spd --report-file=cmp:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.cmp --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.qsys
 Progress: Loading cpu_sys/cpu_sys.qsys
 Progress: Reading input file
 Progress: Adding cpu_clk [clock_source 13.0]
@@ -58,32 +58,32 @@ Info: altpll_0: Generating Verilog simulation model
 Info: altpll_0: Generated simulation model cpu_sys_altpll_0.vo
 Info: altpll_0: "cpu_sys" instantiated altpll "altpll_0"
 Info: nios2_qsys_0: Starting RTL generation for module 'cpu_sys_nios2_qsys_0'
-Info: nios2_qsys_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=cpu_sys_nios2_qsys_0 --dir=/tmp/alt7638_8507986445626964714.dir/0005_nios2_qsys_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0005_nios2_qsys_0_gen//cpu_sys_nios2_qsys_0_processor_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7638_8507986445626964714.dir/0005_nios2_qsys_0_gen/    --bogus  ]
-Info: nios2_qsys_0: # 2018.04.17 00:44:58 (*) Starting Nios II generation
-Info: nios2_qsys_0: # 2018.04.17 00:44:58 (*)   Checking for plaintext license.
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   Couldn't query license setup in Quartus directory /home/vagrant/altera/13.0sp1/quartus
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   LM_LICENSE_FILE environment variable is empty
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   Plaintext license not found.
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   No license required to generate encrypted Nios II/e.
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   Elaborating CPU configuration settings
-Info: nios2_qsys_0: # 2018.04.17 00:45:00 (*)   Creating all objects for CPU
-Info: nios2_qsys_0: # 2018.04.17 00:45:03 (*)   Creating '/tmp/alt7638_8507986445626964714.dir/0005_nios2_qsys_0_gen//cpu_sys_nios2_qsys_0_nios2_waves.do'
-Info: nios2_qsys_0: # 2018.04.17 00:45:03 (*)   Generating RTL from CPU objects
-Info: nios2_qsys_0: # 2018.04.17 00:45:03 (*)   Creating plain-text RTL
-Info: nios2_qsys_0: # 2018.04.17 00:45:11 (*) Done Nios II generation
+Info: nios2_qsys_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=cpu_sys_nios2_qsys_0 --dir=/tmp/alt7644_5373832898034699406.dir/0005_nios2_qsys_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0005_nios2_qsys_0_gen//cpu_sys_nios2_qsys_0_processor_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7644_5373832898034699406.dir/0005_nios2_qsys_0_gen/    --bogus  ]
+Info: nios2_qsys_0: # 2018.04.23 00:17:24 (*) Starting Nios II generation
+Info: nios2_qsys_0: # 2018.04.23 00:17:24 (*)   Checking for plaintext license.
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   Couldn't query license setup in Quartus directory /home/vagrant/altera/13.0sp1/quartus
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   LM_LICENSE_FILE environment variable is empty
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   Plaintext license not found.
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   No license required to generate encrypted Nios II/e.
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   Elaborating CPU configuration settings
+Info: nios2_qsys_0: # 2018.04.23 00:17:26 (*)   Creating all objects for CPU
+Info: nios2_qsys_0: # 2018.04.23 00:17:28 (*)   Creating '/tmp/alt7644_5373832898034699406.dir/0005_nios2_qsys_0_gen//cpu_sys_nios2_qsys_0_nios2_waves.do'
+Info: nios2_qsys_0: # 2018.04.23 00:17:28 (*)   Generating RTL from CPU objects
+Info: nios2_qsys_0: # 2018.04.23 00:17:28 (*)   Creating plain-text RTL
+Info: nios2_qsys_0: # 2018.04.23 00:17:32 (*) Done Nios II generation
 Info: nios2_qsys_0: Done RTL generation for module 'cpu_sys_nios2_qsys_0'
 Info: nios2_qsys_0: "cpu_sys" instantiated altera_nios2_qsys "nios2_qsys_0"
 Info: cpu_mem: Starting RTL generation for module 'cpu_sys_cpu_mem'
-Info: cpu_mem:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=cpu_sys_cpu_mem --dir=/tmp/alt7638_8507986445626964714.dir/0006_cpu_mem_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0006_cpu_mem_gen//cpu_sys_cpu_mem_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7638_8507986445626964714.dir/0006_cpu_mem_gen/  ]
+Info: cpu_mem:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=cpu_sys_cpu_mem --dir=/tmp/alt7644_5373832898034699406.dir/0006_cpu_mem_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0006_cpu_mem_gen//cpu_sys_cpu_mem_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7644_5373832898034699406.dir/0006_cpu_mem_gen/  ]
 Info: cpu_mem: Done RTL generation for module 'cpu_sys_cpu_mem'
 Info: cpu_mem: "cpu_sys" instantiated altera_avalon_onchip_memory2 "cpu_mem"
 Info: pio_0: Starting RTL generation for module 'cpu_sys_pio_0'
-Info: pio_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_sys_pio_0 --dir=/tmp/alt7638_8507986445626964714.dir/0007_pio_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0007_pio_0_gen//cpu_sys_pio_0_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7638_8507986445626964714.dir/0007_pio_0_gen/  ]
+Info: pio_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_sys_pio_0 --dir=/tmp/alt7644_5373832898034699406.dir/0007_pio_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0007_pio_0_gen//cpu_sys_pio_0_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7644_5373832898034699406.dir/0007_pio_0_gen/  ]
 Info: pio_0: Done RTL generation for module 'cpu_sys_pio_0'
 Info: pio_0: "cpu_sys" instantiated altera_avalon_pio "pio_0"
 Info: jtag_uart_0: Starting RTL generation for module 'cpu_sys_jtag_uart_0'
-Info: jtag_uart_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=cpu_sys_jtag_uart_0 --dir=/tmp/alt7638_8507986445626964714.dir/0008_jtag_uart_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0008_jtag_uart_0_gen//cpu_sys_jtag_uart_0_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7638_8507986445626964714.dir/0008_jtag_uart_0_gen/  ]
+Info: jtag_uart_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=cpu_sys_jtag_uart_0 --dir=/tmp/alt7644_5373832898034699406.dir/0008_jtag_uart_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0008_jtag_uart_0_gen//cpu_sys_jtag_uart_0_component_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt7644_5373832898034699406.dir/0008_jtag_uart_0_gen/  ]
 Info: jtag_uart_0: Done RTL generation for module 'cpu_sys_jtag_uart_0'
 Info: jtag_uart_0: "cpu_sys" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info: nios2_qsys_0_data_master_translator: "cpu_sys" instantiated altera_merlin_master_translator "nios2_qsys_0_data_master_translator"
@@ -101,33 +101,33 @@ Info: cmd_xbar_demux_001: "cpu_sys" instantiated altera_merlin_demultiplexer "cm
 Info: cmd_xbar_mux: "cpu_sys" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
 Info: rsp_xbar_demux_001: "cpu_sys" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_001"
 Info: rsp_xbar_mux: "cpu_sys" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
-Info: Reusing file /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/submodules/altera_merlin_arbitrator.sv
 Info: rsp_xbar_mux_001: "cpu_sys" instantiated altera_merlin_multiplexer "rsp_xbar_mux_001"
-Info: Reusing file /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/submodules/altera_merlin_arbitrator.sv
 Info: irq_mapper: "cpu_sys" instantiated altera_irq_mapper "irq_mapper"
-Info: cpu_sys: Done cpu_sys" with 23 modules, 70 files, 1210273 bytes
+Info: cpu_sys: Done cpu_sys" with 23 modules, 70 files, 1210305 bytes
 Info: ip-generate succeeded.
 Info: Finished: Create simulation model
 Info: Starting: Create Modelsim Project.
-Info: sim-script-gen --spd=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.spd --output-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/
-Info: Doing: ip-make-simscript --spd=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.spd --output-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/
-Info: Generating the following file(s) for MODELSIM simulator in /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
+Info: sim-script-gen --spd=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.spd --output-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/
+Info: Doing: ip-make-simscript --spd=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.spd --output-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/
+Info: Generating the following file(s) for MODELSIM simulator in /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
 Info: 	mentor/msim_setup.tcl
-Info: Generating the following file(s) for VCS simulator in /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
+Info: Generating the following file(s) for VCS simulator in /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
 Info: 	synopsys/vcs/vcs_setup.sh
-Info: Generating the following file(s) for VCSMX simulator in /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
+Info: Generating the following file(s) for VCSMX simulator in /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
 Info: 	synopsys/vcsmx/synopsys_sim.setup
 Info: 	synopsys/vcsmx/vcsmx_setup.sh
-Info: Generating the following file(s) for NCSIM simulator in /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
+Info: Generating the following file(s) for NCSIM simulator in /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
 Info: 	cadence/cds.lib
 Info: 	cadence/hdl.var
 Info: 	cadence/ncsim_setup.sh
 Info: 	22 .cds.lib files in cadence/cds_libs/ directory
-Info: Generating the following file(s) for RIVIERAPRO simulator in /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
+Info: Generating the following file(s) for RIVIERAPRO simulator in /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/simulation/ directory:
 Info: 	aldec/rivierapro_setup.tcl
 Info: Finished: Create Modelsim Project.
 Info: Starting: Create block symbol file (.bsf)
-Info: ip-generate --project-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/ --output-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/ --report-file=bsf:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.bsf --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.qsys
+Info: ip-generate --project-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/ --output-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/ --report-file=bsf:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.bsf --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.qsys
 Progress: Loading cpu_sys/cpu_sys.qsys
 Progress: Reading input file
 Progress: Adding cpu_clk [clock_source 13.0]
@@ -152,7 +152,7 @@ Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: ip-generate --project-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/ --output-directory=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.sopcinfo --report-file=html:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.html --report-file=qip:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/synthesis/cpu_sys.qip --report-file=cmp:/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys.qsys --language=VERILOG
+Info: ip-generate --project-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/ --output-directory=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.sopcinfo --report-file=html:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.html --report-file=qip:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/synthesis/cpu_sys.qip --report-file=cmp:/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE30F23C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=/home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys.qsys --language=VERILOG
 Progress: Loading cpu_sys/cpu_sys.qsys
 Progress: Reading input file
 Progress: Adding cpu_clk [clock_source 13.0]
@@ -209,31 +209,31 @@ Warning: cpu_sys: "No matching role found for rst_controller:reset_out:reset_req
 Warning: cpu_sys: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
 Info: altpll_0: "cpu_sys" instantiated altpll "altpll_0"
 Info: nios2_qsys_0: Starting RTL generation for module 'cpu_sys_nios2_qsys_0'
-Info: nios2_qsys_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=cpu_sys_nios2_qsys_0 --dir=/tmp/alt7638_8507986445626964714.dir/0028_nios2_qsys_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0028_nios2_qsys_0_gen//cpu_sys_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0    --bogus  ]
-Info: nios2_qsys_0: # 2018.04.17 00:46:11 (*) Starting Nios II generation
-Info: nios2_qsys_0: # 2018.04.17 00:46:11 (*)   Checking for plaintext license.
-Info: nios2_qsys_0: # 2018.04.17 00:46:17 (*)   Couldn't query license setup in Quartus directory /home/vagrant/altera/13.0sp1/quartus
-Info: nios2_qsys_0: # 2018.04.17 00:46:17 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-Info: nios2_qsys_0: # 2018.04.17 00:46:17 (*)   LM_LICENSE_FILE environment variable is empty
-Info: nios2_qsys_0: # 2018.04.17 00:46:17 (*)   Plaintext license not found.
-Info: nios2_qsys_0: # 2018.04.17 00:46:17 (*)   No license required to generate encrypted Nios II/e.
-Info: nios2_qsys_0: # 2018.04.17 00:46:17 (*)   Elaborating CPU configuration settings
-Info: nios2_qsys_0: # 2018.04.17 00:46:18 (*)   Creating all objects for CPU
-Info: nios2_qsys_0: # 2018.04.17 00:46:23 (*)   Generating RTL from CPU objects
-Info: nios2_qsys_0: # 2018.04.17 00:46:23 (*)   Creating plain-text RTL
-Info: nios2_qsys_0: # 2018.04.17 00:46:36 (*) Done Nios II generation
+Info: nios2_qsys_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=cpu_sys_nios2_qsys_0 --dir=/tmp/alt7644_5373832898034699406.dir/0028_nios2_qsys_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0028_nios2_qsys_0_gen//cpu_sys_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0    --bogus  ]
+Info: nios2_qsys_0: # 2018.04.23 00:17:55 (*) Starting Nios II generation
+Info: nios2_qsys_0: # 2018.04.23 00:17:55 (*)   Checking for plaintext license.
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   Couldn't query license setup in Quartus directory /home/vagrant/altera/13.0sp1/quartus
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   LM_LICENSE_FILE environment variable is empty
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   Plaintext license not found.
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   No license required to generate encrypted Nios II/e.
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   Elaborating CPU configuration settings
+Info: nios2_qsys_0: # 2018.04.23 00:17:57 (*)   Creating all objects for CPU
+Info: nios2_qsys_0: # 2018.04.23 00:17:59 (*)   Generating RTL from CPU objects
+Info: nios2_qsys_0: # 2018.04.23 00:17:59 (*)   Creating plain-text RTL
+Info: nios2_qsys_0: # 2018.04.23 00:18:03 (*) Done Nios II generation
 Info: nios2_qsys_0: Done RTL generation for module 'cpu_sys_nios2_qsys_0'
 Info: nios2_qsys_0: "cpu_sys" instantiated altera_nios2_qsys "nios2_qsys_0"
 Info: cpu_mem: Starting RTL generation for module 'cpu_sys_cpu_mem'
-Info: cpu_mem:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=cpu_sys_cpu_mem --dir=/tmp/alt7638_8507986445626964714.dir/0029_cpu_mem_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0029_cpu_mem_gen//cpu_sys_cpu_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: cpu_mem:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=cpu_sys_cpu_mem --dir=/tmp/alt7644_5373832898034699406.dir/0029_cpu_mem_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0029_cpu_mem_gen//cpu_sys_cpu_mem_component_configuration.pl  --do_build_sim=0  ]
 Info: cpu_mem: Done RTL generation for module 'cpu_sys_cpu_mem'
 Info: cpu_mem: "cpu_sys" instantiated altera_avalon_onchip_memory2 "cpu_mem"
 Info: pio_0: Starting RTL generation for module 'cpu_sys_pio_0'
-Info: pio_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_sys_pio_0 --dir=/tmp/alt7638_8507986445626964714.dir/0030_pio_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0030_pio_0_gen//cpu_sys_pio_0_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_sys_pio_0 --dir=/tmp/alt7644_5373832898034699406.dir/0030_pio_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0030_pio_0_gen//cpu_sys_pio_0_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_0: Done RTL generation for module 'cpu_sys_pio_0'
 Info: pio_0: "cpu_sys" instantiated altera_avalon_pio "pio_0"
 Info: jtag_uart_0: Starting RTL generation for module 'cpu_sys_jtag_uart_0'
-Info: jtag_uart_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=cpu_sys_jtag_uart_0 --dir=/tmp/alt7638_8507986445626964714.dir/0031_jtag_uart_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7638_8507986445626964714.dir/0031_jtag_uart_0_gen//cpu_sys_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0:   Generation command is [exec /home/vagrant/altera/13.0sp1/quartus/linux/perl/bin/perl -I /home/vagrant/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/europa -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I /home/vagrant/altera/13.0sp1/quartus/sopc_builder/bin -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/vagrant/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=cpu_sys_jtag_uart_0 --dir=/tmp/alt7644_5373832898034699406.dir/0031_jtag_uart_0_gen/ --quartus_dir=/home/vagrant/altera/13.0sp1/quartus --verilog --config=/tmp/alt7644_5373832898034699406.dir/0031_jtag_uart_0_gen//cpu_sys_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
 Info: jtag_uart_0: Done RTL generation for module 'cpu_sys_jtag_uart_0'
 Info: jtag_uart_0: "cpu_sys" instantiated altera_avalon_jtag_uart "jtag_uart_0"
 Info: nios2_qsys_0_data_master_translator: "cpu_sys" instantiated altera_merlin_master_translator "nios2_qsys_0_data_master_translator"
@@ -251,10 +251,10 @@ Info: cmd_xbar_demux_001: "cpu_sys" instantiated altera_merlin_demultiplexer "cm
 Info: cmd_xbar_mux: "cpu_sys" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
 Info: rsp_xbar_demux_001: "cpu_sys" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_001"
 Info: rsp_xbar_mux: "cpu_sys" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
-Info: Reusing file /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_xbar_mux_001: "cpu_sys" instantiated altera_merlin_multiplexer "rsp_xbar_mux_001"
-Info: Reusing file /home/vagrant/projects/color3/bringup/models/cpu_sys/cpu_sys/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /home/vagrant/projects/color3_bis/bringup/models/cpu_sys/cpu_sys/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: irq_mapper: "cpu_sys" instantiated altera_irq_mapper "irq_mapper"
-Info: cpu_sys: Done cpu_sys" with 23 modules, 63 files, 1199341 bytes
+Info: cpu_sys: Done cpu_sys" with 23 modules, 63 files, 1199373 bytes
 Info: ip-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

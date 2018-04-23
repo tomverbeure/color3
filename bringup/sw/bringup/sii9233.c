@@ -80,5 +80,6 @@ void sii9233_reset()
 
 void sii9233_init()
 {
+#include "../../../reveng/recordings/sii9233_init.h"
 }
 

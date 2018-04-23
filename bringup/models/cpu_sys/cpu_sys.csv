@@ -1,12 +1,12 @@
-# system info cpu_sys on 2018.04.17.00:54:02
+# system info cpu_sys on 2018.04.23.00:20:14
 system_info:
 name,value
 DEVICE,EP4CE30F23C6
 DEVICE_FAMILY,Cyclone IV E
-GENERATION_ID,1523926411
+GENERATION_ID,1524442777
 #
 #
-# Files generated for cpu_sys on 2018.04.17.00:54:02
+# Files generated for cpu_sys on 2018.04.23.00:20:14
 files:
 filepath,kind,attributes,module,is_top
 simulation/cpu_sys.v,VERILOG,,cpu_sys,true
