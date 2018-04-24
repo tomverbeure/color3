@@ -140,6 +140,30 @@ These oscillators can be factory programmed to a wide range of clocks. The one o
 The board has unpopulated sockets for a USB connector, and an FTDI FT232RL chip. Having this would make this board even more useful
 as a general purpose development board.
 
+PCB connections to the FT232RL chip:
+
+* All standard UART pins are connected to the FPGA and the FPGA only
+* The CBUS poins are all connected to the FPGA as well. However, in addition to that CBUS[3] goes to a
+  a resistor that is connected to ground. The default function of CBUS[3] is PWREN#, which should be pulled up
+  to 5V. But on this PCB, it doesn't go anywhere else but the pulldown to ground.
+* VCCIO (used to power the UART and CBUS pins) is connected to the 3V3OUT pin. This is the configuration of section
+  6.4 of the FT232R datasheet, a USB-powered 3.3V design. 
+* USBDM/USBDP are connected to the FT232R and to U12, which is an ESD protection structure similar to
+  this [Nexperia IP4220CZ6](https://assets.nexperia.com/documents/data-sheet/IP4220CZ6.pdf). This 
+  part is optional. IMPORTANT: the power and ground are pins 5 and 2 respectively. Similar 6 pin
+  TI devices have power and ground at different locations!
+* RESET# is connected to the FPGA only.
+* TEST should be connected straight to GND, but is connected to an unpopulated pulldown to GND instead.
+* VCC (pin 20) and GND (pin 21) need a 100nF and 4.7uF cap that is currently unpopulated.
+
+Conclusion: to make things work, the following needs to be done
+
+* Populate FT232RL (U15)
+* Zero Ohm resistor on TEST (pin 26)
+* 100nF and 4.7uF caps between VCC and GND (pins 20 and 21)
+* Optionally populate the ESD protection (U12)
+
+
 # TMP75 (speculative)
 
 According to one commenter on the Taylor Killian blog post that started it all, there is an empty socket on the board that
