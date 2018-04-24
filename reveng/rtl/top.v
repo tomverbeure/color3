@@ -62,7 +62,24 @@ module top(
 
 	output [35:0]	sii9136_d,
 
-	input [102:0]	misc_input		/* synthesis keep */
+    // FT232RL
+    input [4:0] ft232rl_cbus,       /* synthesis keep */
+    input       ft232rl_cts_,       /* synthesis keep */
+    input       ft232rl_dcd_,       /* synthesis keep */
+    input       ft232rl_dsr_,       /* synthesis keep */
+    input       ft232rl_dtr_,       /* synthesis keep */
+    input       ft232rl_reset_,     /* synthesis keep */
+    input       ft232rl_ri_,        /* synthesis keep */
+    input       ft232rl_rts_,       /* synthesis keep */
+    input       ft232rl_rxd,        /* synthesis keep */
+    input       ft232rl_txd,        /* synthesis keep */
+
+    // TMP75
+    input       tmp75_alert_,       /* synthesis keep */
+    input       tmp75_scl,          /* synthesis keep */
+    input       tmp75_sda,          /* synthesis keep */
+
+	input [84:0]	misc_input		/* synthesis keep */
 	);
 
 

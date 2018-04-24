@@ -409,6 +409,52 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_q[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sii9233_q[0]
 
 #============================================================
+# FT232RL
+#============================================================
+
+set_location_assignment PIN_AA15 -to ft232rl_cbus[0]
+set_location_assignment PIN_AA14 -to ft232rl_cbus[1]
+set_location_assignment PIN_AA8  -to ft232rl_cbus[2]
+set_location_assignment PIN_AA7  -to ft232rl_cbus[3]
+set_location_assignment PIN_AA9  -to ft232rl_cbus[4]
+set_location_assignment PIN_AB7  -to ft232rl_cts_
+set_location_assignment PIN_AB8  -to ft232rl_dcd_
+set_location_assignment PIN_AB9  -to ft232rl_dsr_
+set_location_assignment PIN_AB15 -to ft232rl_dtr_
+set_location_assignment PIN_AA13 -to ft232rl_reset_
+set_location_assignment PIN_AB10 -to ft232rl_ri_
+set_location_assignment PIN_AB14 -to ft232rl_rts_
+set_location_assignment PIN_AB13 -to ft232rl_rxd
+set_location_assignment PIN_AB16 -to ft232rl_txd
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_cbus[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_cbus[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_cbus[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_cbus[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_cbus[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_cts_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_dcd_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_dsr_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_dtr_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_reset_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_ri_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_rts_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_rxd
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ft232rl_txd
+
+#============================================================
+# TMP75
+#============================================================
+#
+set_location_assignment PIN_Y10 -to tmp75_alert_
+set_location_assignment PIN_Y8  -to tmp75_scl
+set_location_assignment PIN_Y7  -to tmp75_sda
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to tmp75_alert_
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to tmp75_scl
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to tmp75_sda
+
+#============================================================
 # IOBANK Voltages
 #============================================================
 set_global_assignment -name IOBANK_VCCIO 3.3V -section_id 6
