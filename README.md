@@ -13,9 +13,10 @@ My log about reverse engineering this board can be found on [this Hackaday proje
 # Status
 
 * All the known important connections to the FPGA have been identified.
-* the `bringup` project configures the SiI9136 HDMI TX chip and successfully sends out a 640x480 test image.
+* the `bringup` project configures the SiI9136 HDMI TX and SiI9233 RX chips, and successfully forwards video from the RX to the
+  TX port while doing some image manipulation on it.
 
-The Hackaday project log will have more detailed information.
+The Hackaday project log has up to date information.
 
 # The Board
 
@@ -66,14 +67,12 @@ Since all major chips are using LVTTL compatilbe IOs, all FPGA IO banks are set 
 
 # Silicon Image Chips
 
-One of the really nice features of the Silicon Image chips is that they support HDCP 1.4. This version of
-HDCP may be completely broken (with a little bit of googling, everybody could create their own keys if they
-wanted to), but it's still pretty much impossible for a hobbyist decode live HDCP 'protected' video content.
+The chips on this board can convert pretty much any known HDMI format to parallel and back. 8bit, 10bit, 12bit color, YUV, etc.
 
-With this board, one should be able to work around that.
+In addition to that, the chips also convert from HDMI audio to I2S and back. However, the I2S outputs of the HDMI receiver are
+connected straight to the I2S inputs of the HDMI transmitter, so there is no possibility for the FPGA to manipulate audio.
 
-A big caveat here is that the programming guide for these chips is available only under NDA for HDCP license
-holders.
+A big caveat with all of this is that the programming guide for these chips is available only under NDA.
 
 The best we can hope for is that somebody can get these chips to work by spying transactions on the I2C bus that runs
 between the FPGA and the SI chips.
@@ -116,6 +115,21 @@ Somebody was able [get the DRAM to work](http://www.taylorkillian.com/2013/04/us
 The SDRAM runs 3.3V as well.
 
 Like the SI chips, the SDRAM IO pins are 3.3V LVTTL compatiable as well.
+
+The Micron SDRAM has an 8MB capacity, organized as 4Mx16b. At 133MHz, this gives a total theoretical peak bandwidth of
+2.13 Gbps. If we assume an 80% efficiency, that number goes down to 1.7Gbps.
+
+If we look at the bandwidth requirements of some common video formats, we get roughly the following:
+* 1080p@60 24bpp: 3.0 Gbps
+* 1080p@24 24bpp: 1.2 Gbps
+* 720p@60 24bpp: 1.33 Gbps
+* 720p@24 24bpp: 0.53 Gbps
+
+Those numbers are one way only, of course, and need to be doubled if we want to frame buffer live video.
+
+So for really complex live video manipulations, we can do 720p@24 at best, if we don't use any kind of compression.
+
+That doesn't mean it's useless: at 1080p, the DRAM can still be use to store compressed still images (at lower resolution), sub-titles, etc.
 
 # IDT8102 Oscillator
 
