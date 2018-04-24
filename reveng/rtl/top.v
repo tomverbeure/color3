@@ -38,6 +38,7 @@ module top(
 	input		sii9233_int		/* synthesis keep */,
 	inout		sii9233_cscl,
 	inout		sii9233_csda,
+	output 		sii9233_ci2ca,
 
 	input 		sii9233_de		/* synthesis keep */,
 	input 		sii9233_hsync		/* synthesis keep */,
@@ -52,6 +53,7 @@ module top(
 	input 		sii9136_int		/* synthesis keep */,
 	inout 		sii9136_cscl,
 	inout 		sii9136_csda,
+	output 		sii9136_ci2ca,
 
 	output 		sii9136_de,
 	output 		sii9136_hsync,
@@ -60,7 +62,7 @@ module top(
 
 	output [35:0]	sii9136_d,
 
-	input [104:0]	misc_input		/* synthesis keep */
+	input [102:0]	misc_input		/* synthesis keep */
 	);
 
 
@@ -76,6 +78,7 @@ module top(
 	assign	sii9136_reset_ = 1'b0;
 	assign 	sii9136_cscl = 1'bz;
 	assign 	sii9136_csda = 1'bz;
+	assign 	sii9136_ci2ca = 1'b0;
 
 	assign 	sii9136_de = 1'b0;
 	assign 	sii9136_hsync = 1'b0;
@@ -87,6 +90,7 @@ module top(
 	assign	sii9233_reset_ = 1'b0;
 	assign 	sii9233_cscl = 1'bz;
 	assign 	sii9233_csda = 1'bz;
+	assign 	sii9233_ci2ca = 1'b0;
 
 	assign flash_dclk = 1'b0;
 	assign flash_nreset = 1'b0;
